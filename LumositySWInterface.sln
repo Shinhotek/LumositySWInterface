@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LumosityXMLInterface", "LumositySWInterface\LumosityXMLInterface.csproj", "{2F68B7EE-C6EF-4F12-BE43-AFED71BE47DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleXMLInterface", "ExampleXMLInterface\ExampleXMLInterface.csproj", "{A4301BB1-E32C-4751-912B-16C36F28F9AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F68B7EE-C6EF-4F12-BE43-AFED71BE47DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F68B7EE-C6EF-4F12-BE43-AFED71BE47DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F68B7EE-C6EF-4F12-BE43-AFED71BE47DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F68B7EE-C6EF-4F12-BE43-AFED71BE47DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4301BB1-E32C-4751-912B-16C36F28F9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4301BB1-E32C-4751-912B-16C36F28F9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4301BB1-E32C-4751-912B-16C36F28F9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4301BB1-E32C-4751-912B-16C36F28F9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29621076-2670-4ACA-BC3C-E9DDDE1D04DD}
+	EndGlobalSection
+EndGlobal
