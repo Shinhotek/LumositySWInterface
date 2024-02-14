@@ -272,19 +272,7 @@ namespace LumosityXMLInterface
             {
                 FrameEvaluations(_dicUseEval, EventArgs.Empty);
             }
-        }
-
-        /// <summary>
-        /// Frame의 Image에 대한 Event
-        /// </summary>
-        public event EventHandler FrameGetImage;
-        private void ReceievedImageEvent()
-        {
-            if (FrameGetImage != null)
-            {
-                FrameGetImage(null, EventArgs.Empty);
-            }
-        }
+        }        
 
         /// <summary>
         /// Socket의 연결이 끊어짐에 대한 Event
