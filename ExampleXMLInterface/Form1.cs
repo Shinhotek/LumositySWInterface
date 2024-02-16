@@ -162,11 +162,13 @@ namespace ExampleXMLInterface
                 textBox_cam_pix_x.Text = _xmlInterface.CamPixelSizeWidth.ToString();
                 textBox_cam_pix_y.Text = _xmlInterface.CamPixelSizeHeight.ToString();
 
-                numericUpDown_cam_roi_x.Maximum = _xmlInterface.CamWidthMax;
-                numericUpDown_cam_roi_y.Maximum = _xmlInterface.CamHeightMax;
-                numericUpDown_cam_roi_w.Maximum = _xmlInterface.CamWidthMax;
-                //numericUpDown_cam_roi_w.Increment = _xmlInterface.CamWid
-                numericUpDown_cam_roi_h.Maximum = _xmlInterface.CamHeightMax;
+                if (_xmlInterface.CamID != "None")
+                {
+                    numericUpDown_cam_roi_x.Maximum = _xmlInterface.CamWidthMax;
+                    numericUpDown_cam_roi_y.Maximum = _xmlInterface.CamHeightMax;
+                    numericUpDown_cam_roi_w.Maximum = _xmlInterface.CamWidthMax;                    
+                    numericUpDown_cam_roi_h.Maximum = _xmlInterface.CamHeightMax;
+                }                
 
                 try
                 {
