@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using static LumosityXMLInterface.XMLInterface;
@@ -14,6 +15,9 @@ namespace ExampleXMLInterface
         XMLInterface _xmlInterface = new XMLInterface();
 
         FramePreview _preview = null;
+
+        string _strIP = "127.0.0.1";
+        int _nPort = 4096;
         public Form1()
         {
             InitializeComponent();
@@ -91,9 +95,27 @@ namespace ExampleXMLInterface
         {
             textBox_conn_status.Text = "Connecting";
 
-            if (!backgroundWorker_connect.IsBusy)
+            try
             {
-                backgroundWorker_connect.RunWorkerAsync();
+                _strIP = textBox_ip_addr.Text;
+                _nPort = Convert.ToInt32(numericUpDown_port.Value);
+                IPAddress addr;
+                if (IPAddress.TryParse(_strIP, out addr))
+                {
+                    textBox_ip_addr.Text = addr.ToString();
+                    if (!backgroundWorker_connect.IsBusy)
+                    {
+                        backgroundWorker_connect.RunWorkerAsync();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalidate IP address");
+                }
+            }
+            catch (Exception E)
+            {
+                MessageBox.Show(E.ToString());
             }
         }
 
@@ -108,7 +130,7 @@ namespace ExampleXMLInterface
         private void button_get_info_Click(object sender, EventArgs e)
         {
             _isGetInfo = true;
-            
+
             // -------------------- Infomation --------------------
             if (_xmlInterface.CmdGetInfomation())
             // ----------------------------------------------------
@@ -166,9 +188,9 @@ namespace ExampleXMLInterface
                 {
                     numericUpDown_cam_roi_x.Maximum = _xmlInterface.CamWidthMax;
                     numericUpDown_cam_roi_y.Maximum = _xmlInterface.CamHeightMax;
-                    numericUpDown_cam_roi_w.Maximum = _xmlInterface.CamWidthMax;                    
+                    numericUpDown_cam_roi_w.Maximum = _xmlInterface.CamWidthMax;
                     numericUpDown_cam_roi_h.Maximum = _xmlInterface.CamHeightMax;
-                }                
+                }
 
                 try
                 {
@@ -203,7 +225,7 @@ namespace ExampleXMLInterface
                         break;
 
                     case ModeAutoControl.AutoExposure:
-                        comboBox_auto_control.SelectedIndex= 1;
+                        comboBox_auto_control.SelectedIndex = 1;
                         break;
                 }
 
@@ -248,7 +270,7 @@ namespace ExampleXMLInterface
                 numericUpDown_sect_cross_row.Value = _xmlInterface.FrameCrossSectionRow;
                 numericUpDown_sect_cross_col.Value = _xmlInterface.FrameCrossSectionCol;
                 radioButton_sect_cross_manual.Checked = !_xmlInterface.FrameCrossSectionAuto;
-                radioButton_sect_cross_centroid.Checked = _xmlInterface.FrameCrossSectionAuto;                
+                radioButton_sect_cross_centroid.Checked = _xmlInterface.FrameCrossSectionAuto;
 
                 checkBox_secs_beam.Checked = _xmlInterface.FrameBeamSectionActive;
                 numericUpDown_secs_beam_row.Value = _xmlInterface.FrameBeamSectionRow;
@@ -291,7 +313,7 @@ namespace ExampleXMLInterface
             _bIsCheckAvailableItem = true;
 
             if (!_isGetInfo)
-            {                
+            {
                 if (e.Item.Checked)
                 {
                     _xmlInterface.AddUseEvaluation(e.Item.Text);
@@ -330,15 +352,14 @@ namespace ExampleXMLInterface
 
             comboBox_secs_border_mode.SelectedIndex = 0;
 
-            tabControl_background.ItemSize = new System.Drawing.Size(0, 1);            
+            tabControl_background.ItemSize = new System.Drawing.Size(0, 1);
         }
 
         private void backgroundWorker_connect_DoWork(object sender, DoWorkEventArgs e)
         {
             if (!_xmlInterface.IsConnected)
             {
-                _xmlInterface.Connect("127.0.0.1", 4096);
-                //_xmlInterface.Connect("192.168.0.141", 4096);
+                _xmlInterface.Connect(_strIP, _nPort);
             }
         }
 
@@ -348,7 +369,7 @@ namespace ExampleXMLInterface
             if (!_xmlInterface.IsConnected)
             {
                 textBox_conn_status.Text = "Disconnected";
-            }            
+            }
         }
 
         private void checkBox_continuous_CheckedChanged(object sender, EventArgs e)
@@ -596,7 +617,7 @@ namespace ExampleXMLInterface
                     _xmlInterface.FrameCrossSectionHorizontalReference = Convert.ToDouble(numericUpDown_secs_border_ref.Value);
                     numericUpDown_secs_border_ref.Value = Convert.ToDecimal(_xmlInterface.FrameCrossSectionHorizontalReference);
 
-                    _xmlInterface.FrameCrossSectionHorizontalOffset = Convert.ToInt32(numericUpDown_secs_border_offset.Value);                    
+                    _xmlInterface.FrameCrossSectionHorizontalOffset = Convert.ToInt32(numericUpDown_secs_border_offset.Value);
                     numericUpDown_secs_border_offset.Value = Convert.ToDecimal(_xmlInterface.FrameCrossSectionHorizontalOffset);
                 }
             }
@@ -693,7 +714,7 @@ namespace ExampleXMLInterface
                     numericUpDown_secs_border_ref.Enabled = false;
                     numericUpDown_secs_border_offset.Enabled = false;
                     numericUpDown_secs_border_left.Enabled = true;
-                    numericUpDown_secs_border_right.Enabled = true;                    
+                    numericUpDown_secs_border_right.Enabled = true;
                 }
                 else if (selIndex == 1)
                 {

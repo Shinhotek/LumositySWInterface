@@ -188,6 +188,8 @@
             this.checkBox_active_roi = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip_listview_click_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox_ip_addr = new System.Windows.Forms.TextBox();
+            this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -252,11 +254,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).BeginInit();
             this.contextMenuStrip_listview_click_menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).BeginInit();
             this.SuspendLayout();
             // 
             // button_connect
             // 
-            this.button_connect.Location = new System.Drawing.Point(12, 12);
+            this.button_connect.Location = new System.Drawing.Point(241, 12);
             this.button_connect.Name = "button_connect";
             this.button_connect.Size = new System.Drawing.Size(75, 23);
             this.button_connect.TabIndex = 0;
@@ -266,7 +269,7 @@
             // 
             // button_disconnect
             // 
-            this.button_disconnect.Location = new System.Drawing.Point(93, 12);
+            this.button_disconnect.Location = new System.Drawing.Point(322, 12);
             this.button_disconnect.Name = "button_disconnect";
             this.button_disconnect.Size = new System.Drawing.Size(83, 23);
             this.button_disconnect.TabIndex = 1;
@@ -2266,12 +2269,39 @@
             this.copyClipboardToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.copyClipboardToolStripMenuItem.Text = "Copy clipboard";
             // 
+            // textBox_ip_addr
+            // 
+            this.textBox_ip_addr.Location = new System.Drawing.Point(12, 12);
+            this.textBox_ip_addr.Name = "textBox_ip_addr";
+            this.textBox_ip_addr.Size = new System.Drawing.Size(138, 21);
+            this.textBox_ip_addr.TabIndex = 11;
+            this.textBox_ip_addr.Text = "127.0.0.1";
+            // 
+            // numericUpDown_port
+            // 
+            this.numericUpDown_port.Location = new System.Drawing.Point(159, 12);
+            this.numericUpDown_port.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numericUpDown_port.Name = "numericUpDown_port";
+            this.numericUpDown_port.Size = new System.Drawing.Size(72, 21);
+            this.numericUpDown_port.TabIndex = 12;
+            this.numericUpDown_port.Value = new decimal(new int[] {
+            4096,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1008, 611);
+            this.Controls.Add(this.numericUpDown_port);
+            this.Controls.Add(this.textBox_ip_addr);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.textBox_version);
             this.Controls.Add(this.button_get_info);
@@ -2374,6 +2404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).EndInit();
             this.contextMenuStrip_listview_click_menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2539,6 +2570,8 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_listview_click_menu;
         private System.Windows.Forms.ToolStripMenuItem copyClipboardToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox_ip_addr;
+        private System.Windows.Forms.NumericUpDown numericUpDown_port;
     }
 }
 
