@@ -3,8 +3,20 @@ Lumosity XML protocol을 조금 더 쉽고 직관적으로 사용할 수 있도�
 ![image](https://github.com/Shinhotek/LumositySWInterface/assets/157770885/de59d64f-7c72-4cbc-93bd-d83dc79e0fc2)
 [Lumosity software (based on .netFramework) Interface Manual.pdf](https://github.com/Shinhotek/LumositySWInterface/files/14274322/Lumosity.software.based.on.netFramework.Interface.Manual.pdf)
 
+   
+   
+ -------------------------------------------------------------------------------------------------------------
+-- Main Lumosity Software (Download LINK) -- 
+   - x64 Setup : http://gofile.me/6HWVE/RUD2fLnOa
+   - x86 Setup : http://gofile.me/6HWVE/A3whil6Xx
 
--- 간략(Start) 사용방법 -- 
+
+
+   
+   
+   
+-------------------------------------------------------------------------------------------------------------   
+-- 간략 사용방법 (Get Start) -- 
 
 1. Conncet Click -> Lumosity 와 연결
    - ![image](https://github.com/user-attachments/assets/e0135510-e1dc-4ccb-aa95-58bd57a05bd2)
