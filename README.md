@@ -16,7 +16,7 @@ Lumosity XML protocol을 조금 더 쉽고 직관적으로 사용할 수 있도�
    
    
 -------------------------------------------------------------------------------------------------------------   
--- 간략 사용방법 (Get Start) -- 
+-- 간략 사용방법 (Getting started) -- 
 
 1. Conncet Click -> Lumosity 와 연결
    - ![image](https://github.com/user-attachments/assets/e0135510-e1dc-4ccb-aa95-58bd57a05bd2)
