@@ -51,6 +51,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.backgroundWorker_connect = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button_reprocess = new System.Windows.Forms.Button();
             this.button_show_preview = new System.Windows.Forms.Button();
             this.numericUpDown_interval = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -73,6 +74,9 @@
             this.numericUpDown_avg_float = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_num_restriction = new System.Windows.Forms.NumericUpDown();
             this.label30 = new System.Windows.Forms.Label();
+            this.checkBox_blur = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_blur_ker = new System.Windows.Forms.NumericUpDown();
+            this.label37 = new System.Windows.Forms.Label();
             this.groupBox_main_ctrl = new System.Windows.Forms.GroupBox();
             this.button_test = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -190,6 +194,7 @@
             this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_ip_addr = new System.Windows.Forms.TextBox();
             this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
+            this.comboBox_blur_type = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -202,6 +207,7 @@
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_avg_float)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_num_restriction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_blur_ker)).BeginInit();
             this.groupBox_main_ctrl.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage_image_correction.SuspendLayout();
@@ -451,6 +457,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.button_reprocess);
             this.groupBox2.Controls.Add(this.button_show_preview);
             this.groupBox2.Controls.Add(this.numericUpDown_interval);
             this.groupBox2.Controls.Add(this.label2);
@@ -461,6 +468,16 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluation Option";
+            // 
+            // button_reprocess
+            // 
+            this.button_reprocess.Location = new System.Drawing.Point(259, 20);
+            this.button_reprocess.Name = "button_reprocess";
+            this.button_reprocess.Size = new System.Drawing.Size(105, 23);
+            this.button_reprocess.TabIndex = 4;
+            this.button_reprocess.Text = "Reprocess";
+            this.button_reprocess.UseVisualStyleBackColor = true;
+            this.button_reprocess.Click += new System.EventHandler(this.button_reprocess_Click);
             // 
             // button_show_preview
             // 
@@ -616,7 +633,7 @@
             this.groupBox_img_process.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_img_process.Name = "groupBox_img_process";
             this.groupBox_img_process.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_img_process.Size = new System.Drawing.Size(412, 91);
+            this.groupBox_img_process.Size = new System.Drawing.Size(412, 113);
             this.groupBox_img_process.TabIndex = 5;
             this.groupBox_img_process.TabStop = false;
             this.groupBox_img_process.Text = "Image process";
@@ -638,12 +655,17 @@
             this.tableLayoutPanel11.Controls.Add(this.numericUpDown_avg_float, 2, 0);
             this.tableLayoutPanel11.Controls.Add(this.numericUpDown_num_restriction, 2, 1);
             this.tableLayoutPanel11.Controls.Add(this.label30, 3, 1);
+            this.tableLayoutPanel11.Controls.Add(this.checkBox_blur, 0, 2);
+            this.tableLayoutPanel11.Controls.Add(this.numericUpDown_blur_ker, 2, 2);
+            this.tableLayoutPanel11.Controls.Add(this.label37, 3, 2);
+            this.tableLayoutPanel11.Controls.Add(this.comboBox_blur_type, 1, 2);
             this.tableLayoutPanel11.Location = new System.Drawing.Point(9, 26);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 2;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(395, 58);
+            this.tableLayoutPanel11.RowCount = 3;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(395, 80);
             this.tableLayoutPanel11.TabIndex = 0;
             // 
             // label28
@@ -669,7 +691,7 @@
             // checkBox_num_restriction
             // 
             this.checkBox_num_restriction.AutoSize = true;
-            this.checkBox_num_restriction.Location = new System.Drawing.Point(3, 32);
+            this.checkBox_num_restriction.Location = new System.Drawing.Point(3, 29);
             this.checkBox_num_restriction.Name = "checkBox_num_restriction";
             this.checkBox_num_restriction.Size = new System.Drawing.Size(128, 16);
             this.checkBox_num_restriction.TabIndex = 3;
@@ -709,7 +731,7 @@
             // numericUpDown_num_restriction
             // 
             this.numericUpDown_num_restriction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_num_restriction.Location = new System.Drawing.Point(270, 32);
+            this.numericUpDown_num_restriction.Location = new System.Drawing.Point(270, 29);
             this.numericUpDown_num_restriction.Maximum = new decimal(new int[] {
             65535,
             0,
@@ -729,11 +751,61 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(343, 29);
+            this.label30.Location = new System.Drawing.Point(343, 26);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(48, 12);
             this.label30.TabIndex = 14;
             this.label30.Text = "Frames";
+            // 
+            // checkBox_blur
+            // 
+            this.checkBox_blur.AutoSize = true;
+            this.checkBox_blur.Location = new System.Drawing.Point(3, 55);
+            this.checkBox_blur.Name = "checkBox_blur";
+            this.checkBox_blur.Size = new System.Drawing.Size(46, 16);
+            this.checkBox_blur.TabIndex = 15;
+            this.checkBox_blur.Text = "Blur";
+            this.checkBox_blur.UseVisualStyleBackColor = true;
+            this.checkBox_blur.CheckedChanged += new System.EventHandler(this.checkBox1_blur_CheckedChanged);
+            // 
+            // numericUpDown_blur_ker
+            // 
+            this.numericUpDown_blur_ker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown_blur_ker.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numericUpDown_blur_ker.Location = new System.Drawing.Point(270, 55);
+            this.numericUpDown_blur_ker.Maximum = new decimal(new int[] {
+            65535,
+            0,
+            0,
+            0});
+            this.numericUpDown_blur_ker.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown_blur_ker.Name = "numericUpDown_blur_ker";
+            this.numericUpDown_blur_ker.Size = new System.Drawing.Size(67, 21);
+            this.numericUpDown_blur_ker.TabIndex = 16;
+            this.numericUpDown_blur_ker.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numericUpDown_blur_ker.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.numericUpDown_blur_ker.ValueChanged += new System.EventHandler(this.numericUpDown_blur_ker_ValueChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(343, 52);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(41, 12);
+            this.label37.TabIndex = 17;
+            this.label37.Text = "Kernel";
             // 
             // groupBox_main_ctrl
             // 
@@ -2294,6 +2366,20 @@
             0,
             0});
             // 
+            // comboBox_blur_type
+            // 
+            this.comboBox_blur_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_blur_type.FormattingEnabled = true;
+            this.comboBox_blur_type.Items.AddRange(new object[] {
+            "Average",
+            "Gaussian",
+            "Median"});
+            this.comboBox_blur_type.Location = new System.Drawing.Point(173, 55);
+            this.comboBox_blur_type.Name = "comboBox_blur_type";
+            this.comboBox_blur_type.Size = new System.Drawing.Size(91, 20);
+            this.comboBox_blur_type.TabIndex = 19;
+            this.comboBox_blur_type.SelectedIndexChanged += new System.EventHandler(this.comboBox_blur_type_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -2335,6 +2421,7 @@
             this.tableLayoutPanel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_avg_float)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_num_restriction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_blur_ker)).EndInit();
             this.groupBox_main_ctrl.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -2572,6 +2659,11 @@
         private System.Windows.Forms.ToolStripMenuItem copyClipboardToolStripMenuItem;
         private System.Windows.Forms.TextBox textBox_ip_addr;
         private System.Windows.Forms.NumericUpDown numericUpDown_port;
+        private System.Windows.Forms.Button button_reprocess;
+        private System.Windows.Forms.CheckBox checkBox_blur;
+        private System.Windows.Forms.NumericUpDown numericUpDown_blur_ker;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.ComboBox comboBox_blur_type;
     }
 }
 

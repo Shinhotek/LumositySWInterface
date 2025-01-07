@@ -141,6 +141,26 @@ namespace LumosityXMLInterface
             BMP, JPG, PNG,
         }
 
+        /// <summary>
+        /// Image process blur 처리 Mode 항목
+        /// </summary>
+        public enum BlurMode
+        {
+            /// <summary>
+            /// 정규화된 필터를 사용하여 이미지를 부드럽게 만듭니다.
+            /// </summary>
+            AVERAGE,
+            /// <summary>
+            /// 가우시안 필터를 사용하여 이미지를 흐리게 처리합니다.
+            /// </summary>
+            GAUSSIAN,
+            /// <summary>
+            /// 중앙값 필터를 사용하여 이미지를 부드럽게 만듭니다.
+            /// </summary>
+            MEDIAN
+        }
+
+
         // socket
         private ClientSocket _mlxSock = new ClientSocket();
         private string _strIpAddr = "127.0.0.1";
@@ -157,6 +177,10 @@ namespace LumosityXMLInterface
         private bool _bNumberRestrictionEnable = false;
         private int _nNumberRestrictionValue = 0;
         private int _nNumberRestrictionValueMax = 10000;
+        private bool _bBlurEnable = false;
+        private int _nBlurKervelValue = 3;
+        private int _nBlurKervelValueMax = 99;
+        private BlurMode _blurMode = BlurMode.AVERAGE;
 
         // camera info
         private string _strCamID = string.Empty;
@@ -252,6 +276,7 @@ namespace LumosityXMLInterface
         // option
         private bool _bIsContinuous = false;
         private int _nInterval = 1;
+        private bool _bIsReprocess = false;
 
         // current frame count
         private int _nFrameCount = 0;
@@ -457,6 +482,50 @@ namespace LumosityXMLInterface
         public int NumberRestrictionValueMax
         {
             get => _nNumberRestrictionValueMax;
+        }
+
+        /// <summary>
+        /// Main control의 Image process에서 Blur 활성/비활성
+        /// </summary>
+        public bool BlurEnable
+        {
+            get => _bBlurEnable;
+            set
+            {
+                SetSettingGeneralBlur(_blurMode, value);
+            }
+        }
+
+        /// <summary>
+        /// Main control의 Image process에서 Blur의 Kernel 수 
+        /// </summary>
+        public int BlurKernelValue
+        {
+            get => _nBlurKervelValue;
+            set
+            {
+                SetSettingGeneralBlur(_blurMode, _bBlurEnable, value);
+            }
+        }
+
+        /// <summary>
+        /// Main control의 Image process에서 Blur의 Mode
+        /// </summary>
+        public BlurMode BlurModeType
+        {
+            get => _blurMode;
+            set
+            {
+                SetSettingGeneralBlur(value, _bBlurEnable);
+            }
+        }
+
+        /// <summary>
+        /// Main control의 Image process에서 Blur의 Kernel 최대 설정가능 값
+        /// </summary>
+        public int BlurKernelValueMax
+        {
+            get => _nBlurKervelValueMax;
         }
 
         /// <summary>
@@ -764,6 +833,20 @@ namespace LumosityXMLInterface
             {
                 _nInterval = value;
                 SendEvaluationItem();
+            }
+        }
+
+        /// <summary>
+        /// Evaluation Frame Reprocess 할지 여부
+        /// </summary>
+        public bool IsReprocessFrame
+        {
+            get { return _bIsReprocess; }
+            set
+            {
+                _bIsReprocess = value;
+                SendEvaluationItem();
+                _bIsReprocess = false;
             }
         }
 
@@ -1971,6 +2054,42 @@ namespace LumosityXMLInterface
             return CmdWait();
         }
 
+        private bool SetSettingGeneralBlur(BlurMode blurMode, bool enable, int kernel = -1)
+        {
+            XElement xSendRoot = new XElement("MLCommandSet");
+            XElement xSettings = new XElement("settings");
+            XElement xGeneral = new XElement("general");
+            XElement xBlur = new XElement("blur");
+
+            if (kernel != -1)
+            {
+                xBlur.Add(new XAttribute("value", kernel));
+            }            
+            xBlur.Add(new XAttribute("enable", enable));
+            switch (blurMode)
+            {
+                case BlurMode.AVERAGE:
+                    xBlur.Add(new XAttribute("mode", "average"));
+                    break;
+
+                case BlurMode.GAUSSIAN:
+                    xBlur.Add(new XAttribute("mode", "gaussian"));
+                    break;
+
+                case BlurMode.MEDIAN:
+                    xBlur.Add(new XAttribute("mode", "median"));
+                    break;
+            }
+
+            xGeneral.Add(xBlur);
+            xSettings.Add(xGeneral);
+            xSendRoot.Add(xSettings);
+
+            SendData(null, xSendRoot.ToString(), "setting general blur");
+
+            return CmdWait();
+        }
+
         private bool SetSettingsCameraROI(int offsetX, int offsetY, int width, int height)
         {
             XElement xSendRoot = new XElement("MLCommandSet");
@@ -2128,6 +2247,7 @@ namespace LumosityXMLInterface
                 if (evalCount > 0)
                 {
                     xEvaluation.Add(new XAttribute("continuous", _bIsContinuous));
+                    xEvaluation.Add(new XAttribute("reprocess", _bIsReprocess));
                     if (_nInterval > 1)
                     {
                         xEvaluation.Add(new XAttribute("interval", _nInterval));
@@ -2606,6 +2726,69 @@ namespace LumosityXMLInterface
                                             catch (Exception)
                                             {
                                                 _nNumberRestrictionValueMax = 10000;
+                                            }
+                                        }
+                                    }
+
+                                    XElement xBlurInfo = xGeneralInfo.Element("blur_info");
+                                    if (xBlurInfo != null && xBlurInfo.HasAttributes)
+                                    {
+                                        XAttribute xBlurInfoAttTmp = xBlurInfo.Attribute("enabled");
+                                        if (xBlurInfoAttTmp != null)
+                                        {
+                                            try
+                                            {
+                                                _bBlurEnable = Convert.ToBoolean(xBlurInfoAttTmp.Value);
+                                            }
+                                            catch (Exception)
+                                            {
+                                                _bBlurEnable = false;
+                                            }
+                                        }
+
+                                        xBlurInfoAttTmp = xBlurInfo.Attribute("mode");
+                                        if (xBlurInfoAttTmp != null)
+                                        {
+                                            string blurMode = xBlurInfoAttTmp.Value;
+                                            switch (blurMode)
+                                            {
+                                                case "average":
+                                                    _blurMode = BlurMode.AVERAGE;
+                                                    break;
+
+                                                case "gaussian":
+                                                    _blurMode = BlurMode.GAUSSIAN;
+                                                    break;
+
+                                                case "median":
+                                                    _blurMode = BlurMode.MEDIAN;
+                                                    break;
+                                            }
+                                        }
+
+                                        xBlurInfoAttTmp = xBlurInfo.Attribute("value");
+                                        if (xBlurInfoAttTmp != null)
+                                        {
+                                            try
+                                            {
+                                                _nBlurKervelValue = Convert.ToInt32(xBlurInfoAttTmp.Value);
+                                            }
+                                            catch (Exception)
+                                            {
+                                                _nBlurKervelValue = 3;
+                                            }
+                                        }                                        
+
+                                        xBlurInfoAttTmp = xBlurInfo.Attribute("max");
+                                        if (xBlurInfoAttTmp != null)
+                                        {
+                                            try
+                                            {
+                                                _nBlurKervelValueMax = Convert.ToInt32(xBlurInfoAttTmp.Value);
+                                            }
+                                            catch (Exception)
+                                            {
+                                                _nBlurKervelValueMax = 99;
                                             }
                                         }
                                     }
@@ -3269,6 +3452,54 @@ namespace LumosityXMLInterface
                                         }
 
                                         CmdCheckSet("setting general numberrestriction");
+                                    }
+                                    #endregion
+
+                                    #region settings general blur
+                                    XElement xBlur = xGeneral.Element("blur");
+                                    if (xBlur != null && xBlur.HasAttributes)
+                                    {
+                                        XAttribute xAttrValue = xBlur.Attribute("value");
+                                        if (xAttrValue != null)
+                                        {
+                                            int blureKenelValue = -1;
+                                            if (int.TryParse(xAttrValue.Value, out blureKenelValue))
+                                            {
+                                                 _nBlurKervelValue = blureKenelValue;
+                                            }
+                                        }
+
+                                        XAttribute xAttrMode = xBlur.Attribute("mode");
+                                        if (xAttrMode != null)
+                                        {
+                                            string blurMode = xAttrMode.Value;
+                                            switch (blurMode)
+                                            {
+                                                case "average":
+                                                    _blurMode = BlurMode.AVERAGE;
+                                                    break;
+
+                                                case "gaussian":
+                                                    _blurMode = BlurMode.GAUSSIAN;
+                                                    break;
+
+                                                case "median":
+                                                    _blurMode = BlurMode.MEDIAN;
+                                                    break;
+                                            }
+                                        }
+
+                                        XAttribute xAttrEnable = xBlur.Attribute("enable");
+                                        if (xAttrEnable != null)
+                                        {
+                                            bool blurEnable = false;
+                                            if (bool.TryParse(xAttrEnable.Value, out blurEnable))
+                                            {
+                                                _bBlurEnable = blurEnable;
+                                            }
+                                        }
+
+                                        CmdCheckSet("setting general blur");
                                     }
                                     #endregion
                                 }

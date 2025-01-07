@@ -180,6 +180,11 @@ namespace ExampleXMLInterface
                 numericUpDown_num_restriction.Maximum = _xmlInterface.NumberRestrictionValueMax;
                 numericUpDown_num_restriction.Value = _xmlInterface.NumberRestrictionValue;
 
+                comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
+                checkBox_blur.Checked = _xmlInterface.BlurEnable;
+                numericUpDown_blur_ker.Value = _xmlInterface.BlurKernelValue;
+                numericUpDown_blur_ker.Maximum = _xmlInterface.BlurKernelValueMax;
+
                 textBox_cam_id.Text = _xmlInterface.CamID;
                 textBox_cam_pix_x.Text = _xmlInterface.CamPixelSizeWidth.ToString();
                 textBox_cam_pix_y.Text = _xmlInterface.CamPixelSizeHeight.ToString();
@@ -848,6 +853,41 @@ namespace ExampleXMLInterface
                 sb.AppendLine();
             }
             Clipboard.SetDataObject(sb.ToString().Trim());
+        }
+
+        private void button_reprocess_Click(object sender, EventArgs e)
+        {
+            _xmlInterface.IsReprocessFrame = true;
+        }
+
+        private void checkBox1_blur_CheckedChanged(object sender, EventArgs e)
+        {
+            _xmlInterface.BlurEnable = checkBox_blur.Checked;
+
+            checkBox_blur.Checked = _xmlInterface.BlurEnable;
+            comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
+            numericUpDown_blur_ker.Value = _xmlInterface.BlurKernelValue;
+            numericUpDown_blur_ker.Maximum = _xmlInterface.BlurKernelValueMax;
+        }
+
+        private void numericUpDown_blur_ker_ValueChanged(object sender, EventArgs e)
+        {
+            _xmlInterface.BlurKernelValue = Convert.ToInt32(numericUpDown_blur_ker.Value);
+
+            checkBox_blur.Checked = _xmlInterface.BlurEnable;
+            comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
+            numericUpDown_blur_ker.Value = _xmlInterface.BlurKernelValue;
+            numericUpDown_blur_ker.Maximum = _xmlInterface.BlurKernelValueMax;
+        }
+
+        private void comboBox_blur_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _xmlInterface.BlurModeType = (BlurMode) comboBox_blur_type.SelectedIndex;
+
+            checkBox_blur.Checked = _xmlInterface.BlurEnable;
+            comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
+            numericUpDown_blur_ker.Value = _xmlInterface.BlurKernelValue;
+            numericUpDown_blur_ker.Maximum = _xmlInterface.BlurKernelValueMax;
         }
     }
 }
