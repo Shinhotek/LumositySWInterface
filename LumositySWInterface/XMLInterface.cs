@@ -21,9 +21,21 @@ namespace LumosityXMLInterface
         /// </summary>
         public struct EvaluationDataSet
         {
+            /// <summary>
+            /// Evaluation 항목 Index name
+            /// </summary>
             public string val;
+
+            /// <summary>
+            /// Evaluation 항목 단위
+            /// </summary>
             public string unit;
 
+            /// <summary>
+            /// Frame Evaluation Data set 생성자
+            /// </summary>
+            /// <param name="evalVal">Evaluation 항목 Index name</param>
+            /// <param name="evalUnit">Evaluation 항목 단위</param>
             public EvaluationDataSet(string evalVal, string evalUnit)
             {
                 val = evalVal;
@@ -62,7 +74,7 @@ namespace LumosityXMLInterface
             /// <summary>
             /// 위치는 자동으로 이동, 수동으로 Size 조절
             /// </summary>
-            CENTROID, 
+            CENTROID,
             /// <summary>
             /// 자동으로 위치 및 Size 조절
             /// </summary>
@@ -77,7 +89,7 @@ namespace LumosityXMLInterface
             /// <summary>
             /// ROI 사각모양
             /// </summary>
-            RECTANGLE, 
+            RECTANGLE,
             /// <summary>
             /// ROI 원형모양
             /// </summary>
@@ -92,7 +104,7 @@ namespace LumosityXMLInterface
             /// <summary>
             /// Border를 마우스를 이용하여 수동으로 이동 가능
             /// </summary>
-            MANUAL, 
+            MANUAL,
             /// <summary>
             /// Border의 Percentage of reference 값을 기준으로 자동으로 Border 이동
             /// </summary>
@@ -107,7 +119,7 @@ namespace LumosityXMLInterface
             /// <summary>
             /// 모든 Camera property를 수동으로 조절
             /// </summary>
-            AutoOff, 
+            AutoOff,
             /// <summary>
             /// Camera의 Exposure time을 자동으로 조절
             /// </summary>
@@ -126,7 +138,7 @@ namespace LumosityXMLInterface
             /// <summary>
             /// Corner 4부분의 영역의 Intensity를 노이즈로 기준하여 노이즈 제거 모드
             /// </summary>
-            CORNER, 
+            CORNER,
             /// <summary>
             /// 상수를 설정하여 노이즈를 상수 값만큼 제거하는 모드
             /// </summary>
@@ -272,6 +284,8 @@ namespace LumosityXMLInterface
         private double _dFrameImgScale = 1.0;
         private bool _bIsFrameImgSucceeded = false;
         private Bitmap _bitmapFrameImg = null;
+        private string _strLoadImgPath = string.Empty;
+        private string _strSaveImgPath = string.Empty;
 
         // option
         private bool _bIsContinuous = false;
@@ -297,7 +311,7 @@ namespace LumosityXMLInterface
             {
                 FrameEvaluations(_dicUseEval, EventArgs.Empty);
             }
-        }        
+        }
 
         /// <summary>
         /// Socket의 연결이 끊어짐에 대한 Event
@@ -1807,6 +1821,22 @@ namespace LumosityXMLInterface
         }
 
         /// <summary>
+        /// Load image 프로토콜 Command의 Load한 이미지파일 경로
+        /// </summary>
+        public string LoadedImagePath
+        {
+            get => _strLoadImgPath;
+        }
+
+        /// <summary>
+        /// Save image 프로토콜 Command의 Save한 이미지파일 경로
+        /// </summary>
+        public string SavedImagePath
+        {
+            get => _strSaveImgPath;
+        }
+
+        /// <summary>
         /// XMLInterface 생성자
         /// </summary>
         public XMLInterface()
@@ -2018,6 +2048,56 @@ namespace LumosityXMLInterface
             }
         }
 
+        /// <summary>
+        /// Lumosity Viewer에서 Load tif 기능
+        /// </summary>
+        /// <param name="filename">Load 할 tif 파일 명 (원격PC일 경우 Local과 다른 경로이므로 공용서버의 경로로 설정)</param>
+        /// <returns>true일 경우 Viewer에서 Load TIF가 성공</returns>
+        public bool LoadImageTif(string filename)
+        {
+            if (IsConnected)
+            {
+                XElement xSendRoot = new XElement("MLCommandSet");
+                XElement xFrame = new XElement("frame");
+                XElement xLoadImg = new XElement("loadImage");
+                XAttribute xPath = new XAttribute("path", filename);
+                xLoadImg.Add(xPath);
+                xFrame.Add(xLoadImg);
+                xSendRoot.Add(xFrame);
+
+                SendData(null, xSendRoot.ToString(), "frame loadImage");
+
+                return CmdWait(700);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Lumosity Viewer에서 Save tif 기능
+        /// </summary>
+        /// <param name="filename">Save 할 tif 파일 명 (원격PC일 경우 Local과 다른 경로이므로 공용서버의 경로로 설정)</param>
+        /// <returns>true일 경우 Viewer에서 Save TIF가 성공</returns>
+        public bool SaveImageTif(string filename)
+        {
+            if (IsConnected)
+            {
+                XElement xSendRoot = new XElement("MLCommandSet");
+                XElement xFrame = new XElement("frame");
+                XElement xSaveImg = new XElement("saveImage");
+                XAttribute xPath = new XAttribute("path", filename);
+                xSaveImg.Add(xPath);
+                xFrame.Add(xSaveImg);
+                xSendRoot.Add(xFrame);
+
+                SendData(null, xSendRoot.ToString(), "frame saveImage");
+
+                return CmdWait(700);
+            }
+            
+            return false;
+        }
+
         private bool SetSettingGeneralFloatingAverage(int averageValue, bool enable)
         {
             XElement xSendRoot = new XElement("MLCommandSet");
@@ -2064,7 +2144,7 @@ namespace LumosityXMLInterface
             if (kernel != -1)
             {
                 xBlur.Add(new XAttribute("value", kernel));
-            }            
+            }
             xBlur.Add(new XAttribute("enable", enable));
             switch (blurMode)
             {
@@ -2777,7 +2857,7 @@ namespace LumosityXMLInterface
                                             {
                                                 _nBlurKervelValue = 3;
                                             }
-                                        }                                        
+                                        }
 
                                         xBlurInfoAttTmp = xBlurInfo.Attribute("max");
                                         if (xBlurInfoAttTmp != null)
@@ -3210,7 +3290,7 @@ namespace LumosityXMLInterface
                                         if (xAttrFrameTmp != null)
                                         {
                                             _bIsFrameImgSucceeded = false;
-                                            bool.TryParse(xAttrFrameTmp.Value, out bIsSucceeded);                                            
+                                            bool.TryParse(xAttrFrameTmp.Value, out bIsSucceeded);
                                         }
 
                                         if (bIsSucceeded)
@@ -3465,7 +3545,7 @@ namespace LumosityXMLInterface
                                             int blureKenelValue = -1;
                                             if (int.TryParse(xAttrValue.Value, out blureKenelValue))
                                             {
-                                                 _nBlurKervelValue = blureKenelValue;
+                                                _nBlurKervelValue = blureKenelValue;
                                             }
                                         }
 
@@ -4412,8 +4492,60 @@ namespace LumosityXMLInterface
                                         CmdCheckSet("frame BeamSections");
                                     }
                                 }
+                                #endregion
+
+                                #region LoadImage
+                                XElement xLoadImage = xTmp.Element("loadImage");
+                                if (xLoadImage != null)
+                                {
+                                    bool isLoadImageErr = false;
+                                    XAttribute xTmpLoadImage = xLoadImage.Attribute("path");
+                                    if (xTmpLoadImage != null)
+                                    {
+                                        string path = xTmpLoadImage.Value;
+                                        _strLoadImgPath = path;
+                                    }
+
+                                    xTmpLoadImage = xLoadImage.Attribute("error");
+                                    if (xTmpLoadImage != null)
+                                    {
+                                        _strError = xTmpLoadImage.Value;
+                                        isLoadImageErr = true;
+                                    }
+
+                                    if (!isLoadImageErr)
+                                    {
+                                        CmdCheckSet("frame loadImage");
+                                    }
+                                }
+                                #endregion
+
+                                #region SaveImage
+                                XElement xSaveImage = xTmp.Element("saveImage");
+                                if (xSaveImage != null)
+                                {
+                                    bool isSaveImageErr = false;
+                                    XAttribute xTmpSaveImage = xSaveImage.Attribute("path");
+                                    if (xTmpSaveImage != null)
+                                    {
+                                        string path = xTmpSaveImage.Value;
+                                        _strSaveImgPath = path;
+                                    }
+
+                                    xTmpSaveImage = xSaveImage.Attribute("error");
+                                    if (xTmpSaveImage != null)
+                                    {
+                                        _strError = xTmpSaveImage.Value;
+                                        isSaveImageErr = true;
+                                    }
+
+                                    if (!isSaveImageErr)
+                                    {
+                                        CmdCheckSet("frame saveImage");
+                                    }
+                                }
+                                #endregion
                             }
-                            #endregion
                         }
                         #endregion
                     }

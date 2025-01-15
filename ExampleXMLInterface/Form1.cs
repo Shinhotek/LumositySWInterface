@@ -889,5 +889,58 @@ namespace ExampleXMLInterface
             numericUpDown_blur_ker.Value = _xmlInterface.BlurKernelValue;
             numericUpDown_blur_ker.Maximum = _xmlInterface.BlurKernelValueMax;
         }
+
+        private void button_load_path_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "TIF file(*.tif)|*.tif|TIFF file(*.tiff)|*.tiff";
+            openFile.Title = "Load TIFF file";
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                textBox_load_path.Text = openFile.FileName;
+            }
+        }
+
+        private void button_load_image_Click(object sender, EventArgs e)
+        {
+            if (textBox_load_path.Text.Length > 0)
+            {
+                if (_xmlInterface.LoadImageTif(textBox_load_path.Text))
+                {
+                    textBox_loaded_path.Text = _xmlInterface.LoadedImagePath;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input load path.");
+            }
+        }
+
+        private void button_save_path_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "TIFF file(*.tif)|*.tif";
+            saveFile.Title = "Save TIFF file";
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                textBox_save_path.Text = saveFile.FileName;
+            }
+        }
+
+        private void button_save_image_Click(object sender, EventArgs e)
+        {
+            if (textBox_save_path.Text.Length > 0)
+            {
+                if (_xmlInterface.SaveImageTif(textBox_save_path.Text))
+                {
+                    textBox_saved_path.Text = _xmlInterface.SavedImagePath;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input load path.");
+            }
+        }
     }
 }

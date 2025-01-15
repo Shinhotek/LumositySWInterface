@@ -77,6 +77,7 @@
             this.checkBox_blur = new System.Windows.Forms.CheckBox();
             this.numericUpDown_blur_ker = new System.Windows.Forms.NumericUpDown();
             this.label37 = new System.Windows.Forms.Label();
+            this.comboBox_blur_type = new System.Windows.Forms.ComboBox();
             this.groupBox_main_ctrl = new System.Windows.Forms.GroupBox();
             this.button_test = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -190,11 +191,25 @@
             this.label15 = new System.Windows.Forms.Label();
             this.numericUpDown_roi_left = new System.Windows.Forms.NumericUpDown();
             this.checkBox_active_roi = new System.Windows.Forms.CheckBox();
+            this.tabPage_files = new System.Windows.Forms.TabPage();
             this.contextMenuStrip_listview_click_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_ip_addr = new System.Windows.Forms.TextBox();
             this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
-            this.comboBox_blur_type = new System.Windows.Forms.ComboBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.textBox_save_path = new System.Windows.Forms.TextBox();
+            this.button_save_path = new System.Windows.Forms.Button();
+            this.textBox_saved_path = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.button_save_image = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.button_load_image = new System.Windows.Forms.Button();
+            this.label40 = new System.Windows.Forms.Label();
+            this.textBox_loaded_path = new System.Windows.Forms.TextBox();
+            this.button_load_path = new System.Windows.Forms.Button();
+            this.textBox_load_path = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -259,8 +274,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).BeginInit();
+            this.tabPage_files.SuspendLayout();
             this.contextMenuStrip_listview_click_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_connect
@@ -606,6 +624,7 @@
             this.tabControl1.Controls.Add(this.tabPage_cam);
             this.tabControl1.Controls.Add(this.tabPage_sections);
             this.tabControl1.Controls.Add(this.tabPage_roi);
+            this.tabControl1.Controls.Add(this.tabPage_files);
             this.tabControl1.Location = new System.Drawing.Point(6, 20);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -806,6 +825,20 @@
             this.label37.Size = new System.Drawing.Size(41, 12);
             this.label37.TabIndex = 17;
             this.label37.Text = "Kernel";
+            // 
+            // comboBox_blur_type
+            // 
+            this.comboBox_blur_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_blur_type.FormattingEnabled = true;
+            this.comboBox_blur_type.Items.AddRange(new object[] {
+            "Average",
+            "Gaussian",
+            "Median"});
+            this.comboBox_blur_type.Location = new System.Drawing.Point(173, 55);
+            this.comboBox_blur_type.Name = "comboBox_blur_type";
+            this.comboBox_blur_type.Size = new System.Drawing.Size(91, 20);
+            this.comboBox_blur_type.TabIndex = 19;
+            this.comboBox_blur_type.SelectedIndexChanged += new System.EventHandler(this.comboBox_blur_type_SelectedIndexChanged);
             // 
             // groupBox_main_ctrl
             // 
@@ -2327,6 +2360,18 @@
             this.checkBox_active_roi.UseVisualStyleBackColor = true;
             this.checkBox_active_roi.CheckedChanged += new System.EventHandler(this.checkBox_active_roi_CheckedChanged);
             // 
+            // tabPage_files
+            // 
+            this.tabPage_files.Controls.Add(this.groupBox15);
+            this.tabPage_files.Controls.Add(this.groupBox14);
+            this.tabPage_files.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_files.Name = "tabPage_files";
+            this.tabPage_files.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_files.Size = new System.Drawing.Size(426, 416);
+            this.tabPage_files.TabIndex = 5;
+            this.tabPage_files.Text = "Files";
+            this.tabPage_files.UseVisualStyleBackColor = true;
+            // 
             // contextMenuStrip_listview_click_menu
             // 
             this.contextMenuStrip_listview_click_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2366,19 +2411,141 @@
             0,
             0});
             // 
-            // comboBox_blur_type
+            // groupBox14
             // 
-            this.comboBox_blur_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_blur_type.FormattingEnabled = true;
-            this.comboBox_blur_type.Items.AddRange(new object[] {
-            "Average",
-            "Gaussian",
-            "Median"});
-            this.comboBox_blur_type.Location = new System.Drawing.Point(173, 55);
-            this.comboBox_blur_type.Name = "comboBox_blur_type";
-            this.comboBox_blur_type.Size = new System.Drawing.Size(91, 20);
-            this.comboBox_blur_type.TabIndex = 19;
-            this.comboBox_blur_type.SelectedIndexChanged += new System.EventHandler(this.comboBox_blur_type_SelectedIndexChanged);
+            this.groupBox14.Controls.Add(this.button_save_image);
+            this.groupBox14.Controls.Add(this.label39);
+            this.groupBox14.Controls.Add(this.textBox_saved_path);
+            this.groupBox14.Controls.Add(this.button_save_path);
+            this.groupBox14.Controls.Add(this.textBox_save_path);
+            this.groupBox14.Controls.Add(this.label38);
+            this.groupBox14.Location = new System.Drawing.Point(6, 6);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(414, 107);
+            this.groupBox14.TabIndex = 0;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Save image (TIF)";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 28);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(42, 12);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "Path : ";
+            // 
+            // textBox_save_path
+            // 
+            this.textBox_save_path.Location = new System.Drawing.Point(54, 23);
+            this.textBox_save_path.Name = "textBox_save_path";
+            this.textBox_save_path.Size = new System.Drawing.Size(318, 21);
+            this.textBox_save_path.TabIndex = 1;
+            // 
+            // button_save_path
+            // 
+            this.button_save_path.Location = new System.Drawing.Point(378, 23);
+            this.button_save_path.Name = "button_save_path";
+            this.button_save_path.Size = new System.Drawing.Size(30, 23);
+            this.button_save_path.TabIndex = 2;
+            this.button_save_path.Text = "...";
+            this.button_save_path.UseVisualStyleBackColor = true;
+            this.button_save_path.Click += new System.EventHandler(this.button_save_path_Click);
+            // 
+            // textBox_saved_path
+            // 
+            this.textBox_saved_path.Location = new System.Drawing.Point(99, 79);
+            this.textBox_saved_path.Name = "textBox_saved_path";
+            this.textBox_saved_path.ReadOnly = true;
+            this.textBox_saved_path.Size = new System.Drawing.Size(309, 21);
+            this.textBox_saved_path.TabIndex = 3;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(6, 82);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(80, 12);
+            this.label39.TabIndex = 4;
+            this.label39.Text = "Saved path : ";
+            // 
+            // button_save_image
+            // 
+            this.button_save_image.Location = new System.Drawing.Point(6, 50);
+            this.button_save_image.Name = "button_save_image";
+            this.button_save_image.Size = new System.Drawing.Size(402, 23);
+            this.button_save_image.TabIndex = 5;
+            this.button_save_image.Text = "Save image  (Execute command)";
+            this.button_save_image.UseVisualStyleBackColor = true;
+            this.button_save_image.Click += new System.EventHandler(this.button_save_image_Click);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.button_load_image);
+            this.groupBox15.Controls.Add(this.label40);
+            this.groupBox15.Controls.Add(this.textBox_loaded_path);
+            this.groupBox15.Controls.Add(this.button_load_path);
+            this.groupBox15.Controls.Add(this.textBox_load_path);
+            this.groupBox15.Controls.Add(this.label41);
+            this.groupBox15.Location = new System.Drawing.Point(6, 119);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(414, 107);
+            this.groupBox15.TabIndex = 6;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Load image (TIF)";
+            // 
+            // button_load_image
+            // 
+            this.button_load_image.Location = new System.Drawing.Point(6, 50);
+            this.button_load_image.Name = "button_load_image";
+            this.button_load_image.Size = new System.Drawing.Size(402, 23);
+            this.button_load_image.TabIndex = 5;
+            this.button_load_image.Text = "Load image (Execute command)";
+            this.button_load_image.UseVisualStyleBackColor = true;
+            this.button_load_image.Click += new System.EventHandler(this.button_load_image_Click);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(6, 82);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(87, 12);
+            this.label40.TabIndex = 4;
+            this.label40.Text = "Loaded path : ";
+            // 
+            // textBox_loaded_path
+            // 
+            this.textBox_loaded_path.Location = new System.Drawing.Point(99, 79);
+            this.textBox_loaded_path.Name = "textBox_loaded_path";
+            this.textBox_loaded_path.ReadOnly = true;
+            this.textBox_loaded_path.Size = new System.Drawing.Size(309, 21);
+            this.textBox_loaded_path.TabIndex = 3;
+            // 
+            // button_load_path
+            // 
+            this.button_load_path.Location = new System.Drawing.Point(378, 23);
+            this.button_load_path.Name = "button_load_path";
+            this.button_load_path.Size = new System.Drawing.Size(30, 23);
+            this.button_load_path.TabIndex = 2;
+            this.button_load_path.Text = "...";
+            this.button_load_path.UseVisualStyleBackColor = true;
+            this.button_load_path.Click += new System.EventHandler(this.button_load_path_Click);
+            // 
+            // textBox_load_path
+            // 
+            this.textBox_load_path.Location = new System.Drawing.Point(54, 23);
+            this.textBox_load_path.Name = "textBox_load_path";
+            this.textBox_load_path.Size = new System.Drawing.Size(318, 21);
+            this.textBox_load_path.TabIndex = 1;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 28);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(42, 12);
+            this.label41.TabIndex = 0;
+            this.label41.Text = "Path : ";
             // 
             // Form1
             // 
@@ -2490,8 +2657,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_width)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).EndInit();
+            this.tabPage_files.ResumeLayout(false);
             this.contextMenuStrip_listview_click_menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2664,6 +2836,21 @@
         private System.Windows.Forms.NumericUpDown numericUpDown_blur_ker;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.ComboBox comboBox_blur_type;
+        private System.Windows.Forms.TabPage tabPage_files;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button button_save_image;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.TextBox textBox_saved_path;
+        private System.Windows.Forms.Button button_save_path;
+        private System.Windows.Forms.TextBox textBox_save_path;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Button button_load_image;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox textBox_loaded_path;
+        private System.Windows.Forms.Button button_load_path;
+        private System.Windows.Forms.TextBox textBox_load_path;
+        private System.Windows.Forms.Label label41;
     }
 }
 
