@@ -49,7 +49,7 @@ namespace Common.Sock
         string _strParseContentStart = "";
         string _strParseContentEnd = "<EOF>";
 
-        string _strEncoding = "iso-8859-1";
+        string _strEncoding = "EUC-KR";
 
 
         public string ParseContentStart
@@ -67,6 +67,12 @@ namespace Common.Sock
         public ClientStatus CommStatus
         {
             get { return _enStatus; }
+        }
+
+        public string EncodingType
+        {
+            get { return _strEncoding; }
+            set { _strEncoding = value; }
         }
 
 

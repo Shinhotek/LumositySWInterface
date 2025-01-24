@@ -192,17 +192,6 @@
             this.numericUpDown_roi_left = new System.Windows.Forms.NumericUpDown();
             this.checkBox_active_roi = new System.Windows.Forms.CheckBox();
             this.tabPage_files = new System.Windows.Forms.TabPage();
-            this.contextMenuStrip_listview_click_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox_ip_addr = new System.Windows.Forms.TextBox();
-            this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.textBox_save_path = new System.Windows.Forms.TextBox();
-            this.button_save_path = new System.Windows.Forms.Button();
-            this.textBox_saved_path = new System.Windows.Forms.TextBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.button_save_image = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.button_load_image = new System.Windows.Forms.Button();
             this.label40 = new System.Windows.Forms.Label();
@@ -210,6 +199,17 @@
             this.button_load_path = new System.Windows.Forms.Button();
             this.textBox_load_path = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.button_save_image = new System.Windows.Forms.Button();
+            this.label39 = new System.Windows.Forms.Label();
+            this.textBox_saved_path = new System.Windows.Forms.TextBox();
+            this.button_save_path = new System.Windows.Forms.Button();
+            this.textBox_save_path = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.contextMenuStrip_listview_click_menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox_ip_addr = new System.Windows.Forms.TextBox();
+            this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -275,10 +275,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).BeginInit();
             this.tabPage_files.SuspendLayout();
+            this.groupBox15.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.contextMenuStrip_listview_click_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).BeginInit();
-            this.groupBox14.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_connect
@@ -2372,113 +2372,6 @@
             this.tabPage_files.Text = "Files";
             this.tabPage_files.UseVisualStyleBackColor = true;
             // 
-            // contextMenuStrip_listview_click_menu
-            // 
-            this.contextMenuStrip_listview_click_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyClipboardToolStripMenuItem});
-            this.contextMenuStrip_listview_click_menu.Name = "contextMenuStrip_listview_click_menu";
-            this.contextMenuStrip_listview_click_menu.Size = new System.Drawing.Size(157, 26);
-            this.contextMenuStrip_listview_click_menu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_listview_click_menu_Opening);
-            // 
-            // copyClipboardToolStripMenuItem
-            // 
-            this.copyClipboardToolStripMenuItem.Name = "copyClipboardToolStripMenuItem";
-            this.copyClipboardToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.copyClipboardToolStripMenuItem.Text = "Copy clipboard";
-            // 
-            // textBox_ip_addr
-            // 
-            this.textBox_ip_addr.Location = new System.Drawing.Point(12, 12);
-            this.textBox_ip_addr.Name = "textBox_ip_addr";
-            this.textBox_ip_addr.Size = new System.Drawing.Size(138, 21);
-            this.textBox_ip_addr.TabIndex = 11;
-            this.textBox_ip_addr.Text = "127.0.0.1";
-            // 
-            // numericUpDown_port
-            // 
-            this.numericUpDown_port.Location = new System.Drawing.Point(159, 12);
-            this.numericUpDown_port.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.numericUpDown_port.Name = "numericUpDown_port";
-            this.numericUpDown_port.Size = new System.Drawing.Size(72, 21);
-            this.numericUpDown_port.TabIndex = 12;
-            this.numericUpDown_port.Value = new decimal(new int[] {
-            4096,
-            0,
-            0,
-            0});
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.button_save_image);
-            this.groupBox14.Controls.Add(this.label39);
-            this.groupBox14.Controls.Add(this.textBox_saved_path);
-            this.groupBox14.Controls.Add(this.button_save_path);
-            this.groupBox14.Controls.Add(this.textBox_save_path);
-            this.groupBox14.Controls.Add(this.label38);
-            this.groupBox14.Location = new System.Drawing.Point(6, 6);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(414, 107);
-            this.groupBox14.TabIndex = 0;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Save image (TIF)";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 28);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(42, 12);
-            this.label38.TabIndex = 0;
-            this.label38.Text = "Path : ";
-            // 
-            // textBox_save_path
-            // 
-            this.textBox_save_path.Location = new System.Drawing.Point(54, 23);
-            this.textBox_save_path.Name = "textBox_save_path";
-            this.textBox_save_path.Size = new System.Drawing.Size(318, 21);
-            this.textBox_save_path.TabIndex = 1;
-            // 
-            // button_save_path
-            // 
-            this.button_save_path.Location = new System.Drawing.Point(378, 23);
-            this.button_save_path.Name = "button_save_path";
-            this.button_save_path.Size = new System.Drawing.Size(30, 23);
-            this.button_save_path.TabIndex = 2;
-            this.button_save_path.Text = "...";
-            this.button_save_path.UseVisualStyleBackColor = true;
-            this.button_save_path.Click += new System.EventHandler(this.button_save_path_Click);
-            // 
-            // textBox_saved_path
-            // 
-            this.textBox_saved_path.Location = new System.Drawing.Point(99, 79);
-            this.textBox_saved_path.Name = "textBox_saved_path";
-            this.textBox_saved_path.ReadOnly = true;
-            this.textBox_saved_path.Size = new System.Drawing.Size(309, 21);
-            this.textBox_saved_path.TabIndex = 3;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(6, 82);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(80, 12);
-            this.label39.TabIndex = 4;
-            this.label39.Text = "Saved path : ";
-            // 
-            // button_save_image
-            // 
-            this.button_save_image.Location = new System.Drawing.Point(6, 50);
-            this.button_save_image.Name = "button_save_image";
-            this.button_save_image.Size = new System.Drawing.Size(402, 23);
-            this.button_save_image.TabIndex = 5;
-            this.button_save_image.Text = "Save image  (Execute command)";
-            this.button_save_image.UseVisualStyleBackColor = true;
-            this.button_save_image.Click += new System.EventHandler(this.button_save_image_Click);
-            // 
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.button_load_image);
@@ -2546,6 +2439,113 @@
             this.label41.Size = new System.Drawing.Size(42, 12);
             this.label41.TabIndex = 0;
             this.label41.Text = "Path : ";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.button_save_image);
+            this.groupBox14.Controls.Add(this.label39);
+            this.groupBox14.Controls.Add(this.textBox_saved_path);
+            this.groupBox14.Controls.Add(this.button_save_path);
+            this.groupBox14.Controls.Add(this.textBox_save_path);
+            this.groupBox14.Controls.Add(this.label38);
+            this.groupBox14.Location = new System.Drawing.Point(6, 6);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(414, 107);
+            this.groupBox14.TabIndex = 0;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Save image (TIF)";
+            // 
+            // button_save_image
+            // 
+            this.button_save_image.Location = new System.Drawing.Point(6, 50);
+            this.button_save_image.Name = "button_save_image";
+            this.button_save_image.Size = new System.Drawing.Size(402, 23);
+            this.button_save_image.TabIndex = 5;
+            this.button_save_image.Text = "Save image  (Execute command)";
+            this.button_save_image.UseVisualStyleBackColor = true;
+            this.button_save_image.Click += new System.EventHandler(this.button_save_image_Click);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(6, 82);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(80, 12);
+            this.label39.TabIndex = 4;
+            this.label39.Text = "Saved path : ";
+            // 
+            // textBox_saved_path
+            // 
+            this.textBox_saved_path.Location = new System.Drawing.Point(99, 79);
+            this.textBox_saved_path.Name = "textBox_saved_path";
+            this.textBox_saved_path.ReadOnly = true;
+            this.textBox_saved_path.Size = new System.Drawing.Size(309, 21);
+            this.textBox_saved_path.TabIndex = 3;
+            // 
+            // button_save_path
+            // 
+            this.button_save_path.Location = new System.Drawing.Point(378, 23);
+            this.button_save_path.Name = "button_save_path";
+            this.button_save_path.Size = new System.Drawing.Size(30, 23);
+            this.button_save_path.TabIndex = 2;
+            this.button_save_path.Text = "...";
+            this.button_save_path.UseVisualStyleBackColor = true;
+            this.button_save_path.Click += new System.EventHandler(this.button_save_path_Click);
+            // 
+            // textBox_save_path
+            // 
+            this.textBox_save_path.Location = new System.Drawing.Point(54, 23);
+            this.textBox_save_path.Name = "textBox_save_path";
+            this.textBox_save_path.Size = new System.Drawing.Size(318, 21);
+            this.textBox_save_path.TabIndex = 1;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(6, 28);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(42, 12);
+            this.label38.TabIndex = 0;
+            this.label38.Text = "Path : ";
+            // 
+            // contextMenuStrip_listview_click_menu
+            // 
+            this.contextMenuStrip_listview_click_menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyClipboardToolStripMenuItem});
+            this.contextMenuStrip_listview_click_menu.Name = "contextMenuStrip_listview_click_menu";
+            this.contextMenuStrip_listview_click_menu.Size = new System.Drawing.Size(157, 26);
+            this.contextMenuStrip_listview_click_menu.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_listview_click_menu_Opening);
+            // 
+            // copyClipboardToolStripMenuItem
+            // 
+            this.copyClipboardToolStripMenuItem.Name = "copyClipboardToolStripMenuItem";
+            this.copyClipboardToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.copyClipboardToolStripMenuItem.Text = "Copy clipboard";
+            // 
+            // textBox_ip_addr
+            // 
+            this.textBox_ip_addr.Location = new System.Drawing.Point(12, 12);
+            this.textBox_ip_addr.Name = "textBox_ip_addr";
+            this.textBox_ip_addr.Size = new System.Drawing.Size(138, 21);
+            this.textBox_ip_addr.TabIndex = 11;
+            this.textBox_ip_addr.Text = "127.0.0.1";
+            // 
+            // numericUpDown_port
+            // 
+            this.numericUpDown_port.Location = new System.Drawing.Point(159, 12);
+            this.numericUpDown_port.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.numericUpDown_port.Name = "numericUpDown_port";
+            this.numericUpDown_port.Size = new System.Drawing.Size(72, 21);
+            this.numericUpDown_port.TabIndex = 12;
+            this.numericUpDown_port.Value = new decimal(new int[] {
+            4096,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -2658,12 +2658,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_top)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_roi_left)).EndInit();
             this.tabPage_files.ResumeLayout(false);
-            this.contextMenuStrip_listview_click_menu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).EndInit();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.contextMenuStrip_listview_click_menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -2372,7 +2372,8 @@ namespace LumosityXMLInterface
                 }
                 _currCmd = cmd;
 
-                string dat = string.Format("{0}\r\n{1}\r\n", "<?xml version='1.0' encoding='ISO-8859-1'?>", xmlData);
+                //string dat = string.Format("{0}\r\n{1}\r\n", "<?xml version='1.0' encoding='ISO-8859-1'?>", xmlData);
+                string dat = string.Format("{0}\r\n{1}\r\n", "<?xml version='1.0' encoding='" + _mlxSock.EncodingType + "'?>", xmlData);
 
                 _mlxSock.Send(null, dat);
             }
