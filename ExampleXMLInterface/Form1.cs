@@ -942,5 +942,21 @@ namespace ExampleXMLInterface
                 MessageBox.Show("Please input load path.");
             }
         }
+
+        private void button_center_pos_cross_Click(object sender, EventArgs e)
+        {
+            if (!_xmlInterface.CrossSectionPositionCenter())
+            {
+                MessageBox.Show("Failed to set center position.");
+            }
+        }
+
+        private void button_center_pos_beam_Click(object sender, EventArgs e)
+        {
+            if (!_xmlInterface.BeamSectionPositionCenter())
+            {
+                MessageBox.Show("Failed to set center position.");
+            }
+        }
     }
 }

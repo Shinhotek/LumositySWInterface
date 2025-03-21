@@ -149,6 +149,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox_secs_border_mode = new System.Windows.Forms.ComboBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button_center_pos_beam = new System.Windows.Forms.Button();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.radioButton_secs_beam_manual = new System.Windows.Forms.RadioButton();
             this.radioButton_secs_beam_centroid = new System.Windows.Forms.RadioButton();
@@ -161,6 +162,7 @@
             this.numericUpDown_secs_beam_angle = new System.Windows.Forms.NumericUpDown();
             this.checkBox_secs_beam = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.button_center_pos_cross = new System.Windows.Forms.Button();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.radioButton_sect_cross_manual = new System.Windows.Forms.RadioButton();
             this.radioButton_sect_cross_centroid = new System.Windows.Forms.RadioButton();
@@ -1563,7 +1565,7 @@
             this.groupBox12.Controls.Add(this.button_secs_hor_attr_apply);
             this.groupBox12.Controls.Add(this.label21);
             this.groupBox12.Controls.Add(this.comboBox_secs_border_mode);
-            this.groupBox12.Location = new System.Drawing.Point(3, 262);
+            this.groupBox12.Location = new System.Drawing.Point(2, 284);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(420, 129);
             this.groupBox12.TabIndex = 4;
@@ -1731,14 +1733,25 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.button_center_pos_beam);
             this.groupBox11.Controls.Add(this.tableLayoutPanel9);
             this.groupBox11.Controls.Add(this.tableLayoutPanel10);
-            this.groupBox11.Location = new System.Drawing.Point(3, 163);
+            this.groupBox11.Location = new System.Drawing.Point(4, 174);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(420, 84);
+            this.groupBox11.Size = new System.Drawing.Size(420, 107);
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Beam sections";
+            // 
+            // button_center_pos_beam
+            // 
+            this.button_center_pos_beam.Location = new System.Drawing.Point(4, 84);
+            this.button_center_pos_beam.Name = "button_center_pos_beam";
+            this.button_center_pos_beam.Size = new System.Drawing.Size(203, 20);
+            this.button_center_pos_beam.TabIndex = 3;
+            this.button_center_pos_beam.Text = "Position Center";
+            this.button_center_pos_beam.UseVisualStyleBackColor = true;
+            this.button_center_pos_beam.Click += new System.EventHandler(this.button_center_pos_beam_Click);
             // 
             // tableLayoutPanel9
             // 
@@ -1897,7 +1910,7 @@
             // checkBox_secs_beam
             // 
             this.checkBox_secs_beam.AutoSize = true;
-            this.checkBox_secs_beam.Location = new System.Drawing.Point(3, 141);
+            this.checkBox_secs_beam.Location = new System.Drawing.Point(4, 152);
             this.checkBox_secs_beam.Name = "checkBox_secs_beam";
             this.checkBox_secs_beam.Size = new System.Drawing.Size(110, 16);
             this.checkBox_secs_beam.TabIndex = 2;
@@ -1907,14 +1920,25 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.button_center_pos_cross);
             this.groupBox10.Controls.Add(this.tableLayoutPanel8);
             this.groupBox10.Controls.Add(this.tableLayoutPanel7);
             this.groupBox10.Location = new System.Drawing.Point(3, 36);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(420, 84);
+            this.groupBox10.Size = new System.Drawing.Size(420, 108);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Cross sections";
+            // 
+            // button_center_pos_cross
+            // 
+            this.button_center_pos_cross.Location = new System.Drawing.Point(5, 84);
+            this.button_center_pos_cross.Name = "button_center_pos_cross";
+            this.button_center_pos_cross.Size = new System.Drawing.Size(203, 20);
+            this.button_center_pos_cross.TabIndex = 2;
+            this.button_center_pos_cross.Text = "Position Center";
+            this.button_center_pos_cross.UseVisualStyleBackColor = true;
+            this.button_center_pos_cross.Click += new System.EventHandler(this.button_center_pos_cross_Click);
             // 
             // tableLayoutPanel8
             // 
@@ -2851,6 +2875,8 @@
         private System.Windows.Forms.Button button_load_path;
         private System.Windows.Forms.TextBox textBox_load_path;
         private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Button button_center_pos_cross;
+        private System.Windows.Forms.Button button_center_pos_beam;
     }
 }
 

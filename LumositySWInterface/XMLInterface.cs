@@ -177,7 +177,7 @@ namespace LumosityXMLInterface
         private ClientSocket _mlxSock = new ClientSocket();
         private string _strIpAddr = "127.0.0.1";
         private int _nPort = 4096;
-        private int _nTimeOut = 7000;
+        private int _nTimeOut = 3000;
 
         // general info
         private string _strVersion = string.Empty;
@@ -1923,7 +1923,7 @@ namespace LumosityXMLInterface
 
                 SendData(null, xSendRoot.ToString(), "acquisition start");
 
-                return CmdWait(700);
+                return CmdWait();
             }
 
             return false;
@@ -1947,7 +1947,7 @@ namespace LumosityXMLInterface
 
                 SendData(null, xSendRoot.ToString(), "acquisition stop");
 
-                return CmdWait(700);
+                return CmdWait();
             }
 
             return false;
@@ -1971,7 +1971,7 @@ namespace LumosityXMLInterface
 
                 SendData(null, xSendRoot.ToString(), "acquisition background");
 
-                return CmdWait(700);
+                return CmdWait();
             }
 
             return false;
@@ -2067,7 +2067,7 @@ namespace LumosityXMLInterface
 
                 SendData(null, xSendRoot.ToString(), "frame loadImage");
 
-                return CmdWait(700);
+                return CmdWait();
             }
 
             return false;
@@ -2092,9 +2092,41 @@ namespace LumosityXMLInterface
 
                 SendData(null, xSendRoot.ToString(), "frame saveImage");
 
-                return CmdWait(700);
+                return CmdWait();
             }
             
+            return false;
+        }
+
+        /// <summary>
+        /// Lumosity Viewer에서 Cross section의 Position을 Center로 이동
+        /// </summary>
+        /// <returns>Command 전송 성공 여부</returns>
+        public bool CrossSectionPositionCenter()
+        {
+            if (IsConnected)
+            {
+                SetFrameCrossSection(_bFrameCrossSection, _nFrameCrossSecRow, _nFrameCrossSecCol, _bFrameCrossSecAuto, true);
+
+                return CmdWait();
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Lumosity Viewer에서 Beam section의 Position을 Center로 이동
+        /// </summary>
+        /// <returns>Command 전송 성공 여부</returns>
+        public bool BeamSectionPositionCenter()
+        {
+            if (IsConnected)
+            {
+                SetFrameBeamSection(_bFrameBeamSection, _nFrameBeamSecRow, _nFrameBeamSecCol, _bFrameBeamSecAuto, _dFrameBeamSecAngle, true);
+
+                return CmdWait();
+            }
+
             return false;
         }
 
@@ -2210,7 +2242,7 @@ namespace LumosityXMLInterface
             return CmdWait();
         }
 
-        private bool SetFrameCrossSection(bool active, int row, int col, bool autoCenter)
+        private bool SetFrameCrossSection(bool active, int row, int col, bool autoCenter, bool posCenter = false)
         {
             XElement xSendRoot = new XElement("MLCommandSet");
             XElement xFrame = new XElement("frame");
@@ -2227,6 +2259,11 @@ namespace LumosityXMLInterface
                 xCrossSec.Add(new XAttribute("mode", "manual"));
             }
 
+            if (posCenter)
+            {
+                xCrossSec.Add(new XAttribute("center", posCenter));
+            }
+
             xFrame.Add(xCrossSec);
             xSendRoot.Add(xFrame);
 
@@ -2235,7 +2272,7 @@ namespace LumosityXMLInterface
             return CmdWait();
         }
 
-        private bool SetFrameBeamSection(bool active, int row, int col, bool autoCenter, double angle)
+        private bool SetFrameBeamSection(bool active, int row, int col, bool autoCenter, double angle, bool posCenter = false)
         {
             XElement xSendRoot = new XElement("MLCommandSet");
             XElement xFrame = new XElement("frame");
@@ -2251,6 +2288,11 @@ namespace LumosityXMLInterface
             else
             {
                 xBeamSec.Add(new XAttribute("mode", "manual"));
+            }
+
+            if (posCenter)
+            {
+                xBeamSec.Add(new XAttribute("center", posCenter));
             }
 
             xFrame.Add(xBeamSec);
