@@ -882,7 +882,7 @@ namespace ExampleXMLInterface
 
         private void comboBox_blur_type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _xmlInterface.BlurModeType = (BlurMode) comboBox_blur_type.SelectedIndex;
+            _xmlInterface.BlurModeType = (BlurMode)comboBox_blur_type.SelectedIndex;
 
             checkBox_blur.Checked = _xmlInterface.BlurEnable;
             comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
@@ -898,17 +898,17 @@ namespace ExampleXMLInterface
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                textBox_load_path.Text = openFile.FileName;
+                textBox_load_img_path.Text = openFile.FileName;
             }
         }
 
         private void button_load_image_Click(object sender, EventArgs e)
         {
-            if (textBox_load_path.Text.Length > 0)
+            if (textBox_load_img_path.Text.Length > 0)
             {
-                if (_xmlInterface.LoadImageTif(textBox_load_path.Text))
+                if (_xmlInterface.LoadImageTif(textBox_load_img_path.Text))
                 {
-                    textBox_loaded_path.Text = _xmlInterface.LoadedImagePath;
+                    textBox_loaded_img_path.Text = _xmlInterface.LoadedImagePath;
                 }
             }
             else
@@ -924,17 +924,17 @@ namespace ExampleXMLInterface
             saveFile.Title = "Save TIFF file";
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                textBox_save_path.Text = saveFile.FileName;
+                textBox_save_img_path.Text = saveFile.FileName;
             }
         }
 
         private void button_save_image_Click(object sender, EventArgs e)
         {
-            if (textBox_save_path.Text.Length > 0)
+            if (textBox_save_img_path.Text.Length > 0)
             {
-                if (_xmlInterface.SaveImageTif(textBox_save_path.Text))
+                if (_xmlInterface.SaveImageTif(textBox_save_img_path.Text))
                 {
-                    textBox_saved_path.Text = _xmlInterface.SavedImagePath;
+                    textBox_saved_img_path.Text = _xmlInterface.SavedImagePath;
                 }
             }
             else
@@ -956,6 +956,61 @@ namespace ExampleXMLInterface
             if (!_xmlInterface.BeamSectionPositionCenter())
             {
                 MessageBox.Show("Failed to set center position.");
+            }
+        }
+
+        private void button_save_conf_Click(object sender, EventArgs e)
+        {
+            if (textBox_save_conf_path.Text.Length > 0)
+            {
+                if (_xmlInterface.SaveConfigFile(textBox_save_conf_path.Text))
+                {
+                    textBox_saved_conf_path.Text = _xmlInterface.SavedImagePath;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input save configuration file path.");
+            }
+        }
+
+
+        private void button_load_conf_Click(object sender, EventArgs e)
+        {
+            if (textBox_load_conf_path.Text.Length > 0)
+            {
+                if (_xmlInterface.LoadConfigFile(textBox_load_conf_path.Text))
+                {
+                    textBox_loaded_conf_path.Text = _xmlInterface.LoadedConfPath;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please input load configuration file path.");
+            }
+        }
+
+        private void button_save_conf_path_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "INI file(*.ini)|*.ini";
+            saveFile.Title = "save INI file";
+
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                textBox_save_conf_path.Text = saveFile.FileName;
+            }
+        }
+
+        private void button_load_conf_path_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "INI file(*.ini)|*.ini";
+            openFile.Title = "load INI file";
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                textBox_load_conf_path.Text = openFile.FileName;
             }
         }
     }
