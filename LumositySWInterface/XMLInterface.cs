@@ -2115,7 +2115,7 @@ namespace LumosityXMLInterface
 
                 return CmdWait();
             }
-            
+
             return false;
         }
 

@@ -882,7 +882,7 @@ namespace ExampleXMLInterface
 
         private void comboBox_blur_type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _xmlInterface.BlurModeType = (BlurMode) comboBox_blur_type.SelectedIndex;
+            _xmlInterface.BlurModeType = (BlurMode)comboBox_blur_type.SelectedIndex;
 
             checkBox_blur.Checked = _xmlInterface.BlurEnable;
             comboBox_blur_type.SelectedIndex = (int)_xmlInterface.BlurModeType;
