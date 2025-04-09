@@ -1,5 +1,5 @@
 # ExampleXMLInterface
-이 프로젝트는 Lumosity XML protocol 을 보다 쉽고 직관적으로 사용할 수 있도록 설계된 .NET Framework 기반의 오픈 소스 클래스 라이브러리입니다. 이 라이브러리는 Sample 코드와 함께 제공되며, XML 인터페이스를 소켓 (Socket) 에 연결해 데이터 송수신 기능을 구현하는 데 필요한 시간을 단축하기 위해 제작되었습니다.
+Lumosity XML protocol 을 보다 쉽고 직관적으로 사용할 수 있도록 설계된 .NET Framework 기반의 오픈 소스 클래스 라이브러리입니다. 이 라이브러리는 Sample 코드와 함께 제공되며, XML 인터페이스를 소켓 (Socket) 에 연결해 데이터 송수신 기능을 구현하는 데 필요한 시간을 단축하기 위해 제작되었습니다.
 
 ## Lumosity Software Interface Sample
 ![Lumosity Software Interface](https://github.com/Shinhotek/LumositySWInterface/assets/157770885/de59d64f-7c72-4cbc-93bd-d83dc79e0fc2)
