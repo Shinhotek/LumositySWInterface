@@ -8,7 +8,6 @@
 [Lumosity Software Interface Manual (PDF)](https://github.com/Shinhotek/LumositySWInterface/files/14274322/Lumosity.software.based.on.netFramework.Interface.Manual.pdf)
 
 ### Lumosity Software 다운로드 링크 :
-다운로드 링크:
 - **x64 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/RUD2fLnOa)
 - **x86 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/A3whil6Xx)
 
