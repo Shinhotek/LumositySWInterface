@@ -1,15 +1,13 @@
+# ExampleXMLInterface
 이 프로젝트는 Lumosity XML protocol 을 보다 쉽고 직관적으로 사용할 수 있도록 설계된 .NET Framework 기반의 오픈 소스 클래스 라이브러리입니다. 이 라이브러리는 Sample 코드와 함께 제공되며, XML 인터페이스를 소켓(Socket)에 연결해 데이터 송수신 기능을 구현하는 데 필요한 시간을 단축하기 위해 제작되었습니다.
 
 ![image](https://github.com/Shinhotek/LumositySWInterface/assets/157770885/de59d64f-7c72-4cbc-93bd-d83dc79e0fc2)
 [Lumosity software (based on the Microsoft .Net Framework) Interface Manual.pdf](https://github.com/Shinhotek/LumositySWInterface/files/14274322/Lumosity.software.based.on.netFramework.Interface.Manual.pdf)
 
-
--- Main Lumosity Software (Download LINK) -- 
-   - x64 Setup : http://gofile.me/6HWVE/RUD2fLnOa
-   - x86 Setup : http://gofile.me/6HWVE/A3whil6Xx
-
-
-# ExampleXMLInterface
+## Main Lumosity Software
+다운로드 링크:
+- **x64 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/RUD2fLnOa)
+- **x86 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/A3whil6Xx)
 
 ## 개요
 **ExampleXMLInterface**는 Lumosity XML 인터페이스를 활용하여 다양한 데이터 처리 및 장치 제어 기능을 제공하는 Windows Forms 애플리케이션입니다. 이 프로젝트는 카메라 설정, 데이터 평가, 이미지 처리 및 기타 관련 작업을 수행할 수 있는 기능을 포함합니다.
