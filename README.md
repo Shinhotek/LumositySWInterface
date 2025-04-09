@@ -4,10 +4,10 @@
 ## Lumosity Software Interface Sample
 ![Lumosity Software Interface](https://github.com/Shinhotek/LumositySWInterface/assets/157770885/de59d64f-7c72-4cbc-93bd-d83dc79e0fc2)
 
-### Lumosity Software 인터페이스 설명서
+### Lumosity Software 인터페이스 설명서 :
 [Lumosity Software Interface Manual (PDF)](https://github.com/Shinhotek/LumositySWInterface/files/14274322/Lumosity.software.based.on.netFramework.Interface.Manual.pdf)
 
-## Main Lumosity Software
+### Lumosity Software 다운로드 링크 :
 다운로드 링크:
 - **x64 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/RUD2fLnOa)
 - **x86 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/A3whil6Xx)
@@ -23,16 +23,16 @@
 ## 주요 기능
 - **Lumosity XML 인터페이스 통합**: XML 기반 통신을 통해 데이터 평가 및 장치 제어.
 - **카메라 제어**:
-  - 해상도, ROI(Region of Interest), 노출 시간, 밝기 설정 등 다양한 카메라 설정 지원.
+  - 해상도, ROI (Region of Interest), 노출 시간, 밝기 설정 등 다양한 카메라 설정 지원.
   - 자동 및 수동 제어 모드 제공.
 - **이미지 처리**:
   - 블러(Blur) 처리, 배경 제거, 섹션 분석 등 다양한 이미지 처리 기능.
 - **데이터 평가**:
   - 실시간 데이터 평가 및 결과 표시.
-  - 평가 항목 추가/제거 및 결과 데이터 시각화.
+  - 평가 항목 추가 / 제거 및 결과 데이터 시각화.
 - **파일 입출력**:
   - TIFF 이미지 파일 로드 및 저장.
-  - 설정 파일(INI) 저장 및 불러오기.
+  - 설정 파일 (INI) 저장 및 불러오기.
 
 ## 설치 및 실행
 1. **필수 요구사항**:
@@ -78,7 +78,7 @@
   - 실시간 프레임 미리보기 및 이미지 시각화.
 
 ## 기여
-이 프로젝트에 기여하고 싶다면, Pull Request를 제출하거나 Issue를 생성해 주세요.
+이 프로젝트에 기여하시기를 희망하시는 경우, Pull Request 를 제출하시거나 Issue 를 생성해 주세요.
 
 ## 라이선스
 이 프로젝트는 [MIT 라이선스](LICENSE)를 따릅니다.
