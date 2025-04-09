@@ -8,8 +8,8 @@
 [Lumosity Software Interface Manual (PDF)](https://github.com/Shinhotek/LumositySWInterface/files/14274322/Lumosity.software.based.on.netFramework.Interface.Manual.pdf)
 
 ### Lumosity Software 다운로드 링크 :
-- **x64 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/RUD2fLnOa)
-- **x86 Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/A3whil6Xx)
+- **x64 (64-bit) Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/RUD2fLnOa)
+- **x86 (32-bit) Setup (.msi)** : [다운로드 링크](http://gofile.me/6HWVE/A3whil6Xx)
 
 ## 개요
 **ExampleXMLInterface**는 Lumosity XML 인터페이스를 활용하여 다양한 데이터 처리 및 장치 제어 기능을 제공하는 Windows Forms 애플리케이션입니다. 이 프로젝트는 카메라 설정, 데이터 평가, 이미지 처리 및 기타 관련 작업을 수행할 수 있는 기능을 포함합니다.
