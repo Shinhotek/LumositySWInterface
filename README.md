@@ -45,26 +45,26 @@
 ## 사용법
 1. **연결 설정 :**
    - Connect 버튼 Click -> Lumosity 와 연결
-   - IP 주소와 포트를 입력한 후 "Connect" 버튼을 클릭하여 장치에 연결합니다.
-   - ![image](https://github.com/user-attachments/assets/e0135510-e1dc-4ccb-aa95-58bd57a05bd2)
+   - IP 주소와 포트를 입력한 후 "Connect" 버튼을 클릭하여 장치에 연결합니다.</br></br>
+     ![image](https://github.com/user-attachments/assets/e0135510-e1dc-4ccb-aa95-58bd57a05bd2)
 2. **카메라 설정 :**
    - Get info (Refresh) Click -> 현재 정보에 대한 업데이트
-   - 카메라 해상도, ROI, 노출 시간 등을 설정합니다.
-   - ![image](https://github.com/user-attachments/assets/dfd8c0e4-4765-47d5-8058-6b96b36b2a28)
+   - 카메라 해상도, ROI, 노출 시간 등을 설정합니다.</br></br>
+     ![image](https://github.com/user-attachments/assets/dfd8c0e4-4765-47d5-8058-6b96b36b2a28)
 4. **데이터 평가 :**
    - Evaluation Avalilable items 에서 평가 결과를 확인할 항목 Check
-   - 평가 항목을 선택하고 데이터를 실시간으로 확인합니다.
-   - ![image](https://github.com/user-attachments/assets/a9ab48fa-ff6c-4f34-87de-55ac47a3485f)
+   - 평가 항목을 선택하고 데이터를 실시간으로 확인합니다.</br></br>
+     ![image](https://github.com/user-attachments/assets/a9ab48fa-ff6c-4f34-87de-55ac47a3485f)
 5. **이미지 처리 :**
    - Evaluation Option 의 Continuous Check -> Frame 마다 업데이트
-   - 블러 모드, 배경 제거 등을 설정하여 이미지를 처리합니다.
-   - ![image](https://github.com/user-attachments/assets/4ad920d1-74fc-480f-ad3c-b6002b68ba3f)
+   - 블러 모드, 배경 제거 등을 설정하여 이미지를 처리합니다.</br></br>
+     ![image](https://github.com/user-attachments/assets/4ad920d1-74fc-480f-ad3c-b6002b68ba3f)
 6. **파일 관리 :**
    - TIFF 이미지를 로드하거나 저장합니다.
    - 설정 파일을 저장하거나 불러옵니다.
 7. **카메라 제어 :**:
-   - Start / Stop 으로 카메라 구동하여 측정 시작 / 정지
-   - ![image](https://github.com/user-attachments/assets/37756c9a-08be-472e-82b6-5827e70a3a72)
+   - Start / Stop 으로 카메라 구동하여 측정 시작 / 정지</br></br>
+     ![image](https://github.com/user-attachments/assets/37756c9a-08be-472e-82b6-5827e70a3a72)
 
 ## 주요 클래스 및 구조
 - **XMLInterface**:
