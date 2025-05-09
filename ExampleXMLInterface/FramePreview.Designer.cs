@@ -118,7 +118,8 @@
             this.comboBox_img_format.Items.AddRange(new object[] {
             "BMP",
             "JPG",
-            "PNG"});
+            "PNG",
+            "TIF"});
             this.comboBox_img_format.Location = new System.Drawing.Point(639, 3);
             this.comboBox_img_format.Name = "comboBox_img_format";
             this.comboBox_img_format.Size = new System.Drawing.Size(118, 20);
@@ -145,6 +146,7 @@
             this.Controls.Add(this.pictureBox_frame_view);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FramePreview";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FramePreview";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FramePreview_FormClosing);
