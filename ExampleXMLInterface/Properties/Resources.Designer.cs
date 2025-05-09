@@ -61,16 +61,6 @@ namespace ExampleXMLInterface.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] ic_fluent_bluetooth_searching_24_filled {
-            get {
-                object obj = ResourceManager.GetObject("ic_fluent_bluetooth_searching_24_filled", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Logoshot_ENG {
