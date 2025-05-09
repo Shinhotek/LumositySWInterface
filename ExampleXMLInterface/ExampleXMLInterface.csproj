@@ -35,6 +35,10 @@
   <PropertyGroup>
     <ApplicationIcon>Resource\Logoshot-ENG.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />

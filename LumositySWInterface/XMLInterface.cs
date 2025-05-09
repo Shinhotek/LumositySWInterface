@@ -8,6 +8,8 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
+using System.IO;
+using System.Xml;
 
 namespace LumosityXMLInterface
 {
@@ -286,6 +288,9 @@ namespace LumosityXMLInterface
         private Bitmap _bitmapFrameImg = null;
         private string _strLoadImgPath = string.Empty;
         private string _strSaveImgPath = string.Empty;
+
+        private string _strLoadConfPath = string.Empty;
+        private string _strSaveConfPath = string.Empty;
         private byte[] _byteTifBuff = null;
 
         // option
@@ -1843,6 +1848,23 @@ namespace LumosityXMLInterface
         public string SavedImagePath
         {
             get => _strSaveImgPath;
+        }
+
+        /// <summary>
+        /// Save image 프로토콜 Command의 Save한 이미지파일 경로
+        /// </summary>
+        public string LoadedConfPath
+        {
+            get => _strLoadConfPath;
+        }
+
+
+        /// <summary>
+        /// Save image 프로토콜 Command의 Save한 이미지파일 경로
+        /// </summary>
+        public string SavedConfPath
+        {
+            get => _strSaveConfPath;
         }
 
         /// <summary>
@@ -4622,6 +4644,60 @@ namespace LumosityXMLInterface
                             }
                         }
                         #endregion
+
+                        #region SaveConfig
+                        XElement xtmp = null;
+                        XElement xSaveConfig = xtmp.Element("saveConfig");
+                        if (xSaveConfig != null)
+                        {
+                            bool isSaveConfErr = false;
+                            XAttribute xTmpSaveConfig = xSaveConfig.Attribute("fileName");
+                            if (xTmpSaveConfig != null)
+                            {
+                                string fileName = xTmpSaveConfig.Value;
+                                _strSaveConfPath = fileName;
+                            }
+
+                            xTmpSaveConfig = xSaveConfig.Attribute("error");
+                            if (xTmpSaveConfig != null)
+                            {
+                                _strError = xTmpSaveConfig.Value;
+                                isSaveConfErr = true;
+                            }
+
+                            if (!isSaveConfErr)
+                            {
+                                CmdCheckSet("saveConfig");
+                            }
+                        }
+                        #endregion
+
+                        #region LoadConfig
+                        XElement xLoadConfig = xtmp.Element("loadConfig");
+                        if (xLoadConfig != null)
+                        {
+                            bool isLoadConfErr = false;
+                            XAttribute xTmpLoadConfig = xLoadConfig.Attribute("fileName");
+                            if (xTmpLoadConfig != null)
+                            {
+                                string fileName = xTmpLoadConfig.Value;
+                                _strLoadConfPath = fileName;
+                            }
+
+                            xTmpLoadConfig = xLoadConfig.Attribute("error");
+                            if (xTmpLoadConfig != null)
+                            {
+                                _strError = xTmpLoadConfig.Value;
+                                isLoadConfErr = true;
+                            }
+
+                            if (!isLoadConfErr)
+                            {
+                                CmdCheckSet("loadConfig");
+                            }
+                        }
+                        #endregion
+
                     }
                     catch (Exception E)
                     {
@@ -4630,6 +4706,52 @@ namespace LumosityXMLInterface
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Loads the configuration file.
+        /// </summary>
+        /// <param name="filename">The configuration data in XML format.</param>
+        /// <returns>True if the configuration was loaded successfully, otherwise false.</returns>
+        public bool LoadConfigFile(string filename)
+        {
+                if (IsConnected)
+                {
+                    XElement xSendRoot = new XElement("MLCommandSet");
+                    XElement xloadConf = new XElement("loadConfig");
+                    XAttribute xPath = new XAttribute("fileName", filename);
+                    xloadConf.Add(xPath);
+                    xSendRoot.Add(xloadConf);
+
+                    SendData(null, xSendRoot.ToString(), "loadConfig");
+
+                    return CmdWait();
+                }
+
+                return false;
+        }
+
+
+        /// <summary>
+        /// Saves the configuration file.
+        /// </summary>
+        /// <param name="filename">The configuration data in XML format.</param>
+        public bool SaveConfigFile(string filename)
+        {
+            if (IsConnected)
+            {
+                XElement xSendRoot = new XElement("MLCommandSet");
+                XElement xSaveConf = new XElement("saveConfig");
+                XAttribute xPath = new XAttribute("fileName", filename);
+                xSaveConf.Add(xPath);
+                xSendRoot.Add(xSaveConf);
+
+                SendData(null, xSendRoot.ToString(), "saveConfig");
+
+                return CmdWait();
+            }
+
+            return false;
         }
 
         private void OnDisconnected(Socket handler)
