@@ -153,7 +153,7 @@ namespace LumosityXMLInterface
         /// </summary>
         public enum GetFrameFormat
         {
-            BMP, JPG, PNG,
+            BMP, JPG, PNG, TIF,
         }
 
         /// <summary>
@@ -289,8 +289,10 @@ namespace LumosityXMLInterface
         private Bitmap _bitmapFrameImg = null;
         private string _strLoadImgPath = string.Empty;
         private string _strSaveImgPath = string.Empty;
+
         private string _strLoadConfPath = string.Empty;
         private string _strSaveConfPath = string.Empty;
+        private byte[] _byteTifBuff = null;
 
         // option
         private bool _bIsContinuous = false;
@@ -1820,6 +1822,14 @@ namespace LumosityXMLInterface
         }
 
         /// <summary>
+        /// 취득된 Frame 이미지의 Tif Raw data
+        /// </summary>
+        public byte[] EvaluationGetFrameTifRawData
+        {
+            get => _byteTifBuff;
+        }
+
+        /// <summary>
         /// 연결된 Lumosity Beam profiler interface Error 내용
         /// </summary>
         public string ErrorDetail
@@ -2422,6 +2432,11 @@ namespace LumosityXMLInterface
                 SendData(null, xSendRoot.ToString(), "evaluation");
 
                 CmdWait();
+
+                if (_bGetFrameActive)
+                {
+                    SetEvaluationGetFrame(_bGetFrameActive, _nGetGrameScale, _getFrameFormat);
+                }
             }
         }
 
@@ -3468,26 +3483,43 @@ namespace LumosityXMLInterface
 
                                                 case "PNG":
                                                     _getFrameFormat = GetFrameFormat.PNG; break;
+
+                                                case "TIF":
+                                                case "TIFF":
+                                                    _getFrameFormat = GetFrameFormat.TIF; break;
                                             }
                                         }
                                     }
 
                                     if (bIsSucceeded)
                                     {
-                                        string cdataVal = xGetFrame.Value;
-                                        byte[] byteBuffer = Convert.FromBase64String(cdataVal);
-
                                         if (_bitmapFrameImg != null)
                                         {
                                             _bitmapFrameImg.Dispose();
-                                            _bitmapFrameImg = null;
                                         }
+                                        _bitmapFrameImg = null;
 
-                                        ImageConverter ic = new ImageConverter();
-                                        Image img = ic.ConvertFrom(byteBuffer) as Image;
-                                        if (img != null)
+                                        if (_byteTifBuff != null)
                                         {
-                                            _bitmapFrameImg = new Bitmap(img);
+                                            Array.Clear(_byteTifBuff, 0, _byteTifBuff.Length);
+                                        }
+                                        _byteTifBuff = null;
+
+                                        string cdataVal = xGetFrame.Value;
+                                        byte[] byteBuffer = Convert.FromBase64String(cdataVal);
+
+                                        if (_getFrameFormat == GetFrameFormat.TIF)
+                                        {
+                                            _byteTifBuff = byteBuffer;
+                                        }
+                                        else
+                                        {
+                                            ImageConverter ic = new ImageConverter();
+                                            Image img = ic.ConvertFrom(byteBuffer) as Image;
+                                            if (img != null)
+                                            {
+                                                _bitmapFrameImg = new Bitmap(img);
+                                            }
                                         }
                                     }
 
@@ -4683,20 +4715,20 @@ namespace LumosityXMLInterface
         /// <returns>True if the configuration was loaded successfully, otherwise false.</returns>
         public bool LoadConfigFile(string filename)
         {
-            if (IsConnected)
-            {
-                XElement xSendRoot = new XElement("MLCommandSet");
-                XElement xloadConf = new XElement("loadConfig");
-                XAttribute xPath = new XAttribute("fileName", filename);
-                xloadConf.Add(xPath);
-                xSendRoot.Add(xloadConf);
+                if (IsConnected)
+                {
+                    XElement xSendRoot = new XElement("MLCommandSet");
+                    XElement xloadConf = new XElement("loadConfig");
+                    XAttribute xPath = new XAttribute("fileName", filename);
+                    xloadConf.Add(xPath);
+                    xSendRoot.Add(xloadConf);
 
-                SendData(null, xSendRoot.ToString(), "loadConfig");
+                    SendData(null, xSendRoot.ToString(), "loadConfig");
 
-                return CmdWait();
-            }
+                    return CmdWait();
+                }
 
-            return false;
+                return false;
         }
 
 

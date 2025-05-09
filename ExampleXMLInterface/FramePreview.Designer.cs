@@ -55,11 +55,11 @@
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown_frame_scale, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.comboBox_img_format, 4, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 29);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(651, 31);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // checkBox_frame_act
@@ -68,7 +68,7 @@
             this.checkBox_frame_act.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBox_frame_act.Location = new System.Drawing.Point(3, 3);
             this.checkBox_frame_act.Name = "checkBox_frame_act";
-            this.checkBox_frame_act.Size = new System.Drawing.Size(118, 23);
+            this.checkBox_frame_act.Size = new System.Drawing.Size(100, 25);
             this.checkBox_frame_act.TabIndex = 0;
             this.checkBox_frame_act.Text = "Activate preview";
             this.checkBox_frame_act.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(127, 0);
+            this.label1.Location = new System.Drawing.Point(109, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 29);
+            this.label1.Size = new System.Drawing.Size(175, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Scale (%) : ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -88,9 +88,9 @@
             // numericUpDown_frame_scale
             // 
             this.numericUpDown_frame_scale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown_frame_scale.Location = new System.Drawing.Point(339, 3);
+            this.numericUpDown_frame_scale.Location = new System.Drawing.Point(290, 3);
             this.numericUpDown_frame_scale.Name = "numericUpDown_frame_scale";
-            this.numericUpDown_frame_scale.Size = new System.Drawing.Size(128, 21);
+            this.numericUpDown_frame_scale.Size = new System.Drawing.Size(108, 20);
             this.numericUpDown_frame_scale.TabIndex = 2;
             this.numericUpDown_frame_scale.Value = new decimal(new int[] {
             20,
@@ -103,9 +103,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(473, 0);
+            this.label2.Location = new System.Drawing.Point(404, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 29);
+            this.label2.Size = new System.Drawing.Size(136, 31);
             this.label2.TabIndex = 3;
             this.label2.Text = "Image format : ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -118,10 +118,11 @@
             this.comboBox_img_format.Items.AddRange(new object[] {
             "BMP",
             "JPG",
-            "PNG"});
+            "PNG",
+            "TIF"});
             this.comboBox_img_format.Location = new System.Drawing.Point(639, 3);
             this.comboBox_img_format.Name = "comboBox_img_format";
-            this.comboBox_img_format.Size = new System.Drawing.Size(118, 20);
+            this.comboBox_img_format.Size = new System.Drawing.Size(102, 21);
             this.comboBox_img_format.TabIndex = 4;
             this.comboBox_img_format.SelectedIndexChanged += new System.EventHandler(this.comboBox_img_format_SelectedIndexChanged);
             // 
@@ -130,21 +131,22 @@
             this.pictureBox_frame_view.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_frame_view.Location = new System.Drawing.Point(12, 47);
+            this.pictureBox_frame_view.Location = new System.Drawing.Point(10, 51);
             this.pictureBox_frame_view.Name = "pictureBox_frame_view";
-            this.pictureBox_frame_view.Size = new System.Drawing.Size(760, 502);
+            this.pictureBox_frame_view.Size = new System.Drawing.Size(651, 544);
             this.pictureBox_frame_view.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_frame_view.TabIndex = 1;
             this.pictureBox_frame_view.TabStop = false;
             // 
             // FramePreview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(672, 608);
             this.Controls.Add(this.pictureBox_frame_view);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FramePreview";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FramePreview";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FramePreview_FormClosing);

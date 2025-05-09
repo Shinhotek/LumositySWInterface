@@ -1,9 +1,14 @@
 ﻿using LumosityXMLInterface;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using static LumosityXMLInterface.XMLInterface;
@@ -64,7 +69,40 @@ namespace ExampleXMLInterface
 
             if (_preview != null)
             {
-                _preview.SetBitmap(_xmlInterface.EvaluationGetFrameBitmap);
+                if (_xmlInterface.EvaluationGetFrameFormat == GetFrameFormat.TIF)
+                {
+                    if (_xmlInterface.EvaluationGetFrameTifRawData != null)
+                    {
+                        // 16bit Raw data(byte) 처리 
+                        int height = _xmlInterface.EvaluationGetFrameBitmapHeight;
+                        int width = _xmlInterface.EvaluationGetFrameBitmapWidth;
+                        byte[] rawData = _xmlInterface.EvaluationGetFrameTifRawData;
+
+                        // 16bit Raw data --> OpenCVSharp 8bit (For Display UI)
+                        Mat decodedMat = new Mat(height, width, MatType.CV_16UC1);
+                        Marshal.Copy(rawData, 0, decodedMat.Data, rawData.Length);
+                        decodedMat.ConvertTo(decodedMat, MatType.CV_8UC1, 65535 / (Math.Pow(2, _xmlInterface.CamDepth) - 1) / 257); // 16비트 → 8비트로 축소
+                        _preview.SetBitmap(decodedMat.ToBitmap());
+
+
+                        // 16bit Raw data(byte) 처리 Pixel data 가져오기
+                        ushort[,] pixelArray = new ushort[height, width];
+
+                        for (int y = 0; y < height; y++)
+                        {
+                            for (int x = 0; x < width; x++)
+                            {
+                                int idx = (y * width + x) * 2;
+                                ushort pixel = (ushort)(rawData[idx] | (rawData[idx + 1] << 8));
+                                pixelArray[y, x] = pixel;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    _preview.SetBitmap(_xmlInterface.EvaluationGetFrameBitmap);
+                }
             }
         }
         #endregion

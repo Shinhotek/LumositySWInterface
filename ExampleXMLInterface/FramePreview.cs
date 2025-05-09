@@ -62,6 +62,10 @@ namespace ExampleXMLInterface
                 case 2:
                     _xmlInterface.EvaluationGetFrameFormat = XMLInterface.GetFrameFormat.PNG;
                     break;
+
+                case 3:
+                    _xmlInterface.EvaluationGetFrameFormat = XMLInterface.GetFrameFormat.TIF;
+                    break;
             }
         }
     }
