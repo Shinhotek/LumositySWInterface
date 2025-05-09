@@ -323,7 +323,7 @@
             // 
             // button_get_info
             // 
-            this.button_get_info.Location = new System.Drawing.Point(632, 12);
+            this.button_get_info.Location = new System.Drawing.Point(547, 12);
             this.button_get_info.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_get_info.Name = "button_get_info";
             this.button_get_info.Size = new System.Drawing.Size(131, 23);
@@ -378,7 +378,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(770, 16);
+            this.label1.Location = new System.Drawing.Point(758, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 12);
@@ -628,7 +628,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(764, 37);
+            this.label5.Location = new System.Drawing.Point(750, 37);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 12);
