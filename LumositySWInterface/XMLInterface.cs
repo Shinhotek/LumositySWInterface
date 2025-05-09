@@ -10,6 +10,7 @@ using System.Linq;
 using System.Drawing;
 using System.IO;
 using System.Xml;
+using System.Drawing.Text;
 
 namespace LumosityXMLInterface
 {
@@ -304,6 +305,8 @@ namespace LumosityXMLInterface
         private static ManualResetEventSlim _receiveDone = new ManualResetEventSlim(false);
         private string _currCmd = string.Empty;
         private string _strError = string.Empty;
+        private bool isLoadConfErr;
+        private bool isSaveConfErr;
 
         /// <summary>
         /// Frame의 측정 항목의 결과에 대한 Event
@@ -3285,6 +3288,56 @@ namespace LumosityXMLInterface
                             }
                             #endregion
 
+                            #region saveConfig
+                            xTmp = xRoot.Element("saveConfig");
+                            if (xTmp != null)
+                            {
+                                XAttribute xTmpSaveConfig = xTmp.Attribute("fileName");
+                                if (xTmpSaveConfig != null)
+                                {
+                                    string fileName = xTmpSaveConfig.Value;
+                                    _strSaveConfPath = fileName;
+                                }
+
+                               xTmpSaveConfig = xTmp.Attribute("error");
+                                if (xTmpSaveConfig != null)
+                                {
+                                    _strError = xTmpSaveConfig.Value;
+                                    isSaveConfErr = true;
+                                }
+
+                                if (!isSaveConfErr)
+                                {
+                                    CmdCheckSet("saveConfig");
+                                }
+                            }
+                            #endregion
+
+                            #region loadConfig
+                            xTmp = xRoot.Element("loadConfig");
+                            if (xTmp != null)
+                            {
+                                XAttribute xTmpLoadConfig = xTmp.Attribute("fileName");
+                                if (xTmpLoadConfig != null)
+                                {
+                                    string fileName = xTmpLoadConfig.Value;
+                                    _strLoadConfPath = fileName;
+                                }
+
+                                xTmpLoadConfig = xTmp.Attribute("error");
+                                if (xTmpLoadConfig != null)
+                                {
+                                    _strError = xTmpLoadConfig.Value;
+                                    isLoadConfErr = true;
+                                }
+
+                                if (!isLoadConfErr)
+                                {
+                                    CmdCheckSet("loadConfig");
+                                }
+                            }
+                            #endregion
+
                             #region evaluation
                             xTmp = xRoot.Element("evaluation");
                             if (xTmp != null && !xTmp.IsEmpty)
@@ -3342,6 +3395,7 @@ namespace LumosityXMLInterface
                                         }
                                     }
                                 }
+                                                          
 
                                 XElement xGetFrame = xTmp.Element("getFrame");
                                 if (xGetFrame != null)
@@ -4612,60 +4666,6 @@ namespace LumosityXMLInterface
                             }
                         }
                         #endregion
-
-                        #region SaveConfig
-                        XElement xtmp = null;
-                        XElement xSaveConfig = xtmp.Element("saveConfig");
-                        if (xSaveConfig != null)
-                        {
-                            bool isSaveConfErr = false;
-                            XAttribute xTmpSaveConfig = xSaveConfig.Attribute("fileName");
-                            if (xTmpSaveConfig != null)
-                            {
-                                string fileName = xTmpSaveConfig.Value;
-                                _strSaveConfPath = fileName;
-                            }
-
-                            xTmpSaveConfig = xSaveConfig.Attribute("error");
-                            if (xTmpSaveConfig != null)
-                            {
-                                _strError = xTmpSaveConfig.Value;
-                                isSaveConfErr = true;
-                            }
-
-                            if (!isSaveConfErr)
-                            {
-                                CmdCheckSet("saveConfig");
-                            }
-                        }
-                        #endregion
-
-                        #region LoadConfig
-                        XElement xLoadConfig = xtmp.Element("loadConfig");
-                        if (xLoadConfig != null)
-                        {
-                            bool isLoadConfErr = false;
-                            XAttribute xTmpLoadConfig = xLoadConfig.Attribute("fileName");
-                            if (xTmpLoadConfig != null)
-                            {
-                                string fileName = xTmpLoadConfig.Value;
-                                _strLoadConfPath = fileName;
-                            }
-
-                            xTmpLoadConfig = xLoadConfig.Attribute("error");
-                            if (xTmpLoadConfig != null)
-                            {
-                                _strError = xTmpLoadConfig.Value;
-                                isLoadConfErr = true;
-                            }
-
-                            if (!isLoadConfErr)
-                            {
-                                CmdCheckSet("loadConfig");
-                            }
-                        }
-                        #endregion
-
                     }
                     catch (Exception E)
                     {

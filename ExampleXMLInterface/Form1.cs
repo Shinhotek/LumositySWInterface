@@ -965,7 +965,7 @@ namespace ExampleXMLInterface
             {
                 if (_xmlInterface.SaveConfigFile(textBox_save_conf_path.Text))
                 {
-                    textBox_saved_conf_path.Text = _xmlInterface.SavedImagePath;
+                    textBox_saved_conf_path.Text = _xmlInterface.SavedConfPath;
                 }
             }
             else

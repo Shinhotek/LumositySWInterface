@@ -226,6 +226,7 @@
             this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_ip_addr = new System.Windows.Forms.TextBox();
             this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -297,6 +298,7 @@
             this.groupBox14.SuspendLayout();
             this.contextMenuStrip_listview_click_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button_connect
@@ -322,7 +324,7 @@
             // button_get_info
             // 
             this.button_get_info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_get_info.Location = new System.Drawing.Point(530, 13);
+            this.button_get_info.Location = new System.Drawing.Point(602, 10);
             this.button_get_info.Name = "button_get_info";
             this.button_get_info.Size = new System.Drawing.Size(112, 25);
             this.button_get_info.TabIndex = 2;
@@ -332,8 +334,8 @@
             // 
             // listView_available_items
             // 
-            this.listView_available_items.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listView_available_items.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView_available_items.CheckBoxes = true;
             this.listView_available_items.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -343,7 +345,7 @@
             this.listView_available_items.HideSelection = false;
             this.listView_available_items.Location = new System.Drawing.Point(5, 22);
             this.listView_available_items.Name = "listView_available_items";
-            this.listView_available_items.Size = new System.Drawing.Size(454, 175);
+            this.listView_available_items.Size = new System.Drawing.Size(539, 134);
             this.listView_available_items.TabIndex = 0;
             this.listView_available_items.UseCompatibleStateImageBehavior = false;
             this.listView_available_items.View = System.Windows.Forms.View.Details;
@@ -361,12 +363,12 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.listView_available_items);
             this.groupBox3.Location = new System.Drawing.Point(10, 142);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(464, 204);
+            this.groupBox3.Size = new System.Drawing.Size(549, 163);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Evaluation Available items";
@@ -379,7 +381,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(678, 17);
+            this.label1.Location = new System.Drawing.Point(720, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 4;
@@ -388,7 +390,7 @@
             // textBox_conn_status
             // 
             this.textBox_conn_status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_conn_status.Location = new System.Drawing.Point(729, 13);
+            this.textBox_conn_status.Location = new System.Drawing.Point(761, 10);
             this.textBox_conn_status.Name = "textBox_conn_status";
             this.textBox_conn_status.ReadOnly = true;
             this.textBox_conn_status.Size = new System.Drawing.Size(152, 20);
@@ -396,25 +398,20 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button_get);
-            this.groupBox1.Controls.Add(this.textBox_value_unit);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox_key);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.listView_use_items);
-            this.groupBox1.Location = new System.Drawing.Point(10, 352);
+            this.groupBox1.Location = new System.Drawing.Point(12, 311);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(464, 297);
+            this.groupBox1.Size = new System.Drawing.Size(549, 470);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Evaluation Use items";
             // 
             // button_get
             // 
-            this.button_get.Location = new System.Drawing.Point(417, 265);
+            this.button_get.Location = new System.Drawing.Point(414, 790);
             this.button_get.Name = "button_get";
             this.button_get.Size = new System.Drawing.Size(33, 25);
             this.button_get.TabIndex = 5;
@@ -424,7 +421,7 @@
             // 
             // textBox_value_unit
             // 
-            this.textBox_value_unit.Location = new System.Drawing.Point(266, 268);
+            this.textBox_value_unit.Location = new System.Drawing.Point(263, 793);
             this.textBox_value_unit.Name = "textBox_value_unit";
             this.textBox_value_unit.ReadOnly = true;
             this.textBox_value_unit.Size = new System.Drawing.Size(147, 20);
@@ -433,7 +430,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(193, 271);
+            this.label4.Location = new System.Drawing.Point(190, 796);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 3;
@@ -441,7 +438,7 @@
             // 
             // textBox_key
             // 
-            this.textBox_key.Location = new System.Drawing.Point(86, 268);
+            this.textBox_key.Location = new System.Drawing.Point(83, 793);
             this.textBox_key.Name = "textBox_key";
             this.textBox_key.Size = new System.Drawing.Size(103, 20);
             this.textBox_key.TabIndex = 2;
@@ -449,7 +446,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 271);
+            this.label3.Location = new System.Drawing.Point(12, 796);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 1;
@@ -457,8 +454,8 @@
             // 
             // listView_use_items
             // 
-            this.listView_use_items.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listView_use_items.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listView_use_items.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
@@ -467,7 +464,7 @@
             this.listView_use_items.HideSelection = false;
             this.listView_use_items.Location = new System.Drawing.Point(5, 22);
             this.listView_use_items.Name = "listView_use_items";
-            this.listView_use_items.Size = new System.Drawing.Size(454, 237);
+            this.listView_use_items.Size = new System.Drawing.Size(539, 678);
             this.listView_use_items.TabIndex = 0;
             this.listView_use_items.UseCompatibleStateImageBehavior = false;
             this.listView_use_items.View = System.Windows.Forms.View.Details;
@@ -491,7 +488,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.button_reprocess);
             this.groupBox2.Controls.Add(this.button_show_preview);
@@ -500,7 +497,7 @@
             this.groupBox2.Controls.Add(this.checkBox_continuous);
             this.groupBox2.Location = new System.Drawing.Point(10, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(464, 57);
+            this.groupBox2.Size = new System.Drawing.Size(549, 46);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Evaluation Option";
@@ -568,7 +565,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.button_stop);
             this.groupBox4.Controls.Add(this.button_start);
-            this.groupBox4.Location = new System.Drawing.Point(480, 78);
+            this.groupBox4.Location = new System.Drawing.Point(562, 73);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(399, 57);
             this.groupBox4.TabIndex = 7;
@@ -608,7 +605,7 @@
             // textBox_version
             // 
             this.textBox_version.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_version.Location = new System.Drawing.Point(729, 42);
+            this.textBox_version.Location = new System.Drawing.Point(761, 34);
             this.textBox_version.Name = "textBox_version";
             this.textBox_version.ReadOnly = true;
             this.textBox_version.Size = new System.Drawing.Size(152, 20);
@@ -618,7 +615,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(672, 46);
+            this.label5.Location = new System.Drawing.Point(715, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 13);
             this.label5.TabIndex = 8;
@@ -628,16 +625,16 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.tabControl1);
-            this.groupBox5.Location = new System.Drawing.Point(480, 142);
+            this.groupBox5.Location = new System.Drawing.Point(562, 140);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(399, 507);
+            this.groupBox5.Size = new System.Drawing.Size(399, 641);
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Remote System";
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage_main);
             this.tabControl1.Controls.Add(this.tabPage_image_correction);
@@ -665,7 +662,7 @@
             // 
             // groupBox_img_process
             // 
-            this.groupBox_img_process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox_img_process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_img_process.Controls.Add(this.tableLayoutPanel11);
             this.groupBox_img_process.Location = new System.Drawing.Point(6, 115);
@@ -679,8 +676,8 @@
             // 
             // tableLayoutPanel11
             // 
-            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel11.ColumnCount = 4;
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.25397F));
@@ -756,6 +753,11 @@
             0,
             0,
             0});
+            this.numericUpDown_avg_float.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numericUpDown_avg_float.Name = "numericUpDown_avg_float";
             this.numericUpDown_avg_float.Size = new System.Drawing.Size(56, 20);
             this.numericUpDown_avg_float.TabIndex = 8;
@@ -773,6 +775,11 @@
             this.numericUpDown_num_restriction.Location = new System.Drawing.Point(233, 32);
             this.numericUpDown_num_restriction.Maximum = new decimal(new int[] {
             65535,
+            0,
+            0,
+            0});
+            this.numericUpDown_num_restriction.Minimum = new decimal(new int[] {
+            2,
             0,
             0,
             0});
@@ -862,7 +869,7 @@
             // 
             // groupBox_main_ctrl
             // 
-            this.groupBox_main_ctrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox_main_ctrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_main_ctrl.Controls.Add(this.button_test);
             this.groupBox_main_ctrl.Controls.Add(this.tableLayoutPanel2);
@@ -887,8 +894,8 @@
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -987,8 +994,8 @@
             // 
             // tabControl_background
             // 
-            this.tabControl_background.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl_background.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl_background.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl_background.Controls.Add(this.tabPage_back_image);
@@ -1258,7 +1265,7 @@
             // 
             // groupBox_property
             // 
-            this.groupBox_property.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox_property.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_property.Controls.Add(this.tableLayoutPanel3);
             this.groupBox_property.Location = new System.Drawing.Point(3, 171);
@@ -1272,8 +1279,8 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.23174F));
@@ -1403,8 +1410,8 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.tableLayoutPanel1);
             this.groupBox6.Location = new System.Drawing.Point(3, 76);
@@ -1765,7 +1772,7 @@
             // 
             // tableLayoutPanel9
             // 
-            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -1807,7 +1814,7 @@
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel10.ColumnCount = 6;
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -1952,7 +1959,7 @@
             // 
             // tableLayoutPanel8
             // 
-            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel8.ColumnCount = 2;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -1994,7 +2001,7 @@
             // 
             // tableLayoutPanel7
             // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel7.ColumnCount = 4;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -2106,8 +2113,8 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel6.ColumnCount = 2;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -2159,8 +2166,8 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 3;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -2217,8 +2224,8 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.tableLayoutPanel4);
             this.groupBox7.Location = new System.Drawing.Point(3, 38);
@@ -2716,14 +2723,28 @@
             0,
             0});
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(993, 476);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(73, 85);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(891, 662);
+            this.ClientSize = new System.Drawing.Size(1113, 827);
+            this.Controls.Add(this.button_get);
+            this.Controls.Add(this.textBox_value_unit);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.numericUpDown_port);
+            this.Controls.Add(this.textBox_key);
             this.Controls.Add(this.textBox_ip_addr);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.textBox_version);
             this.Controls.Add(this.button_get_info);
@@ -2744,7 +2765,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_interval)).EndInit();
@@ -2837,6 +2857,7 @@
             this.groupBox14.PerformLayout();
             this.contextMenuStrip_listview_click_menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_port)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3040,6 +3061,7 @@
         private System.Windows.Forms.Button button_save_conf_path;
         private System.Windows.Forms.TextBox textBox_save_conf_path;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
