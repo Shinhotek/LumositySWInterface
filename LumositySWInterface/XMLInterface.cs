@@ -974,7 +974,7 @@ namespace LumosityXMLInterface
         /// </summary>
         public int FrameCrossSectionRow
         {
-            get => _nFrameBeamSecRow;
+            get => _nFrameCrossSecRow;
             set
             {
                 SetFrameCrossSection(_bFrameCrossSection, value, _nFrameCrossSecCol, _bFrameCrossSecAuto);
@@ -986,7 +986,7 @@ namespace LumosityXMLInterface
         /// </summary>
         public int FrameCrossSectionCol
         {
-            get => _nFrameBeamSecCol;
+            get => _nFrameCrossSecCol;
             set
             {
                 SetFrameCrossSection(_bFrameCrossSection, _nFrameCrossSecRow, value, _bFrameCrossSecAuto);
