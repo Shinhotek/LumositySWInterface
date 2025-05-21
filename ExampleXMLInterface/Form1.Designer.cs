@@ -45,10 +45,10 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button_get = new System.Windows.Forms.Button();
-            this.textBox_value_unit = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBox_key = new System.Windows.Forms.TextBox();
+            this.textBox_value_unit = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.backgroundWorker_connect = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button_reprocess = new System.Windows.Forms.Button();
@@ -448,6 +448,14 @@
             this.button_get.UseVisualStyleBackColor = true;
             this.button_get.Click += new System.EventHandler(this.button_get_Click);
             // 
+            // textBox_key
+            // 
+            this.textBox_key.Location = new System.Drawing.Point(86, 266);
+            this.textBox_key.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox_key.Name = "textBox_key";
+            this.textBox_key.Size = new System.Drawing.Size(119, 21);
+            this.textBox_key.TabIndex = 2;
+            // 
             // textBox_value_unit
             // 
             this.textBox_value_unit.Location = new System.Drawing.Point(296, 266);
@@ -456,24 +464,6 @@
             this.textBox_value_unit.ReadOnly = true;
             this.textBox_value_unit.Size = new System.Drawing.Size(171, 21);
             this.textBox_value_unit.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(211, 269);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Value(unit) : ";
-            // 
-            // textBox_key
-            // 
-            this.textBox_key.Location = new System.Drawing.Point(86, 266);
-            this.textBox_key.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.textBox_key.Name = "textBox_key";
-            this.textBox_key.Size = new System.Drawing.Size(119, 21);
-            this.textBox_key.TabIndex = 2;
             // 
             // label3
             // 
@@ -484,6 +474,16 @@
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 1;
             this.label3.Text = "Key Name : ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(211, 269);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Value(unit) : ";
             // 
             // backgroundWorker_connect
             // 
@@ -679,9 +679,9 @@
             // 
             this.groupBox_img_process.Controls.Add(this.tableLayoutPanel11);
             this.groupBox_img_process.Location = new System.Drawing.Point(7, 106);
-            this.groupBox_img_process.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_img_process.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_img_process.Name = "groupBox_img_process";
-            this.groupBox_img_process.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_img_process.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_img_process.Size = new System.Drawing.Size(412, 113);
             this.groupBox_img_process.TabIndex = 5;
             this.groupBox_img_process.TabStop = false;
@@ -718,7 +718,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(334, 0);
+            this.label28.Location = new System.Drawing.Point(333, 0);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(48, 12);
@@ -775,7 +775,7 @@
             0,
             0});
             this.numericUpDown_avg_float.Name = "numericUpDown_avg_float";
-            this.numericUpDown_avg_float.Size = new System.Drawing.Size(53, 21);
+            this.numericUpDown_avg_float.Size = new System.Drawing.Size(52, 21);
             this.numericUpDown_avg_float.TabIndex = 8;
             this.numericUpDown_avg_float.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown_avg_float.Value = new decimal(new int[] {
@@ -801,7 +801,7 @@
             0,
             0});
             this.numericUpDown_num_restriction.Name = "numericUpDown_num_restriction";
-            this.numericUpDown_num_restriction.Size = new System.Drawing.Size(53, 21);
+            this.numericUpDown_num_restriction.Size = new System.Drawing.Size(52, 21);
             this.numericUpDown_num_restriction.TabIndex = 10;
             this.numericUpDown_num_restriction.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown_num_restriction.Value = new decimal(new int[] {
@@ -814,7 +814,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(334, 26);
+            this.label30.Location = new System.Drawing.Point(333, 26);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(48, 12);
@@ -854,7 +854,7 @@
             0,
             0});
             this.numericUpDown_blur_ker.Name = "numericUpDown_blur_ker";
-            this.numericUpDown_blur_ker.Size = new System.Drawing.Size(53, 21);
+            this.numericUpDown_blur_ker.Size = new System.Drawing.Size(52, 21);
             this.numericUpDown_blur_ker.TabIndex = 16;
             this.numericUpDown_blur_ker.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numericUpDown_blur_ker.Value = new decimal(new int[] {
@@ -867,7 +867,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(334, 52);
+            this.label37.Location = new System.Drawing.Point(333, 52);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(41, 12);
@@ -894,9 +894,9 @@
             this.groupBox_main_ctrl.Controls.Add(this.button_test);
             this.groupBox_main_ctrl.Controls.Add(this.tableLayoutPanel2);
             this.groupBox_main_ctrl.Location = new System.Drawing.Point(7, 7);
-            this.groupBox_main_ctrl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_main_ctrl.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_main_ctrl.Name = "groupBox_main_ctrl";
-            this.groupBox_main_ctrl.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_main_ctrl.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_main_ctrl.Size = new System.Drawing.Size(412, 90);
             this.groupBox_main_ctrl.TabIndex = 4;
             this.groupBox_main_ctrl.TabStop = false;
@@ -922,7 +922,7 @@
             this.tableLayoutPanel2.Controls.Add(this.radioButton_oneshot, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.radioButton_continuous, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(9, 27);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -935,7 +935,7 @@
             this.radioButton_ext_trigger.AutoSize = true;
             this.radioButton_ext_trigger.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButton_ext_trigger.Location = new System.Drawing.Point(4, 31);
-            this.radioButton_ext_trigger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_ext_trigger.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_ext_trigger.Name = "radioButton_ext_trigger";
             this.radioButton_ext_trigger.Size = new System.Drawing.Size(190, 20);
             this.radioButton_ext_trigger.TabIndex = 2;
@@ -950,7 +950,7 @@
             this.radioButton_oneshot.AutoSize = true;
             this.radioButton_oneshot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButton_oneshot.Location = new System.Drawing.Point(202, 4);
-            this.radioButton_oneshot.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_oneshot.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_oneshot.Name = "radioButton_oneshot";
             this.radioButton_oneshot.Size = new System.Drawing.Size(190, 19);
             this.radioButton_oneshot.TabIndex = 1;
@@ -965,7 +965,7 @@
             this.radioButton_continuous.AutoSize = true;
             this.radioButton_continuous.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radioButton_continuous.Location = new System.Drawing.Point(4, 4);
-            this.radioButton_continuous.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton_continuous.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton_continuous.Name = "radioButton_continuous";
             this.radioButton_continuous.Size = new System.Drawing.Size(190, 19);
             this.radioButton_continuous.TabIndex = 0;
@@ -1316,9 +1316,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_property.Controls.Add(this.tableLayoutPanel3);
             this.groupBox_property.Location = new System.Drawing.Point(4, 158);
-            this.groupBox_property.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_property.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox_property.Name = "groupBox_property";
-            this.groupBox_property.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox_property.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox_property.Size = new System.Drawing.Size(386, 148);
             this.groupBox_property.TabIndex = 4;
             this.groupBox_property.TabStop = false;
@@ -1341,7 +1341,7 @@
             this.tableLayoutPanel3.Controls.Add(this.numericUpDown_trigger_delay, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.comboBox_auto_control, 1, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(8, 25);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 4;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.06265F));
@@ -1368,7 +1368,7 @@
             this.numericUpDown_exposure_time.DecimalPlaces = 1;
             this.numericUpDown_exposure_time.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_exposure_time.Location = new System.Drawing.Point(242, 32);
-            this.numericUpDown_exposure_time.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_exposure_time.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_exposure_time.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1408,7 +1408,7 @@
             this.numericUpDown_gain.DecimalPlaces = 1;
             this.numericUpDown_gain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_gain.Location = new System.Drawing.Point(242, 4);
-            this.numericUpDown_gain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_gain.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_gain.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1435,7 +1435,7 @@
             // 
             this.numericUpDown_trigger_delay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_trigger_delay.Location = new System.Drawing.Point(242, 60);
-            this.numericUpDown_trigger_delay.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_trigger_delay.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_trigger_delay.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1464,9 +1464,9 @@
             // 
             this.groupBox6.Controls.Add(this.tableLayoutPanel1);
             this.groupBox6.Location = new System.Drawing.Point(4, 70);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(389, 80);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
@@ -1489,7 +1489,7 @@
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown_cam_roi_x, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 18);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -1501,7 +1501,7 @@
             // 
             this.numericUpDown_cam_roi_h.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_cam_roi_h.Location = new System.Drawing.Point(289, 33);
-            this.numericUpDown_cam_roi_h.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_cam_roi_h.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_cam_roi_h.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -1528,7 +1528,7 @@
             // 
             this.numericUpDown_cam_roi_w.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_cam_roi_w.Location = new System.Drawing.Point(99, 33);
-            this.numericUpDown_cam_roi_w.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_cam_roi_w.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_cam_roi_w.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -1555,7 +1555,7 @@
             // 
             this.numericUpDown_cam_roi_y.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_cam_roi_y.Location = new System.Drawing.Point(289, 4);
-            this.numericUpDown_cam_roi_y.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_cam_roi_y.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_cam_roi_y.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -1594,7 +1594,7 @@
             // 
             this.numericUpDown_cam_roi_x.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_cam_roi_x.Location = new System.Drawing.Point(99, 4);
-            this.numericUpDown_cam_roi_x.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_cam_roi_x.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_cam_roi_x.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2320,9 +2320,9 @@
             // 
             this.groupBox7.Controls.Add(this.tableLayoutPanel4);
             this.groupBox7.Location = new System.Drawing.Point(4, 35);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(389, 80);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
@@ -2345,7 +2345,7 @@
             this.tableLayoutPanel4.Controls.Add(this.numericUpDown_roi_left, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 18);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -2357,7 +2357,7 @@
             // 
             this.numericUpDown_roi_height.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_roi_height.Location = new System.Drawing.Point(289, 33);
-            this.numericUpDown_roi_height.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_roi_height.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_roi_height.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -2389,7 +2389,7 @@
             // 
             this.numericUpDown_roi_width.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_roi_width.Location = new System.Drawing.Point(99, 33);
-            this.numericUpDown_roi_width.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_roi_width.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_roi_width.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -2421,7 +2421,7 @@
             // 
             this.numericUpDown_roi_top.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_roi_top.Location = new System.Drawing.Point(289, 4);
-            this.numericUpDown_roi_top.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_roi_top.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_roi_top.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -2465,7 +2465,7 @@
             // 
             this.numericUpDown_roi_left.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown_roi_left.Location = new System.Drawing.Point(99, 4);
-            this.numericUpDown_roi_left.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown_roi_left.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown_roi_left.Maximum = new decimal(new int[] {
             99999,
             0,

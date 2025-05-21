@@ -23,6 +23,9 @@ namespace ExampleXMLInterface
 
         string _strIP = "127.0.0.1";
         int _nPort = 4096;
+
+        bool _bIsUIUpdate = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -474,57 +477,78 @@ namespace ExampleXMLInterface
         private void numericUpDown_cam_roi_x_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamOffsetX = Convert.ToInt32(numericUpDown_cam_roi_x.Value);
+            _bIsUIUpdate = true;
             numericUpDown_cam_roi_x.Value = _xmlInterface.CamOffsetX;
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_cam_roi_y_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamOffsetY = Convert.ToInt32(numericUpDown_cam_roi_y.Value);
+            _bIsUIUpdate = true;
             numericUpDown_cam_roi_y.Value = _xmlInterface.CamOffsetY;
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_cam_roi_w_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamWidth = Convert.ToInt32(numericUpDown_cam_roi_w.Value);
+            _bIsUIUpdate = true;
             numericUpDown_cam_roi_w.Value = _xmlInterface.CamWidth;
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_cam_roi_h_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamHeight = Convert.ToInt32(numericUpDown_cam_roi_h.Value);
+            _bIsUIUpdate = true;
             numericUpDown_cam_roi_h.Value = _xmlInterface.CamHeight;
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_gain_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamGain = Convert.ToDouble(numericUpDown_gain.Value);
+            _bIsUIUpdate = true;
             numericUpDown_gain.Value = Convert.ToDecimal(_xmlInterface.CamGain);
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_exposure_time_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamExposureTime = Convert.ToDouble(numericUpDown_exposure_time.Value);
+            _bIsUIUpdate = true;
             numericUpDown_exposure_time.Value = Convert.ToDecimal(_xmlInterface.CamExposureTime);
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_trigger_delay_ValueChanged(object sender, EventArgs e)
         {
             if (_isGetInfo) return;
+            if (_bIsUIUpdate) return;
 
             _xmlInterface.CamTriggerDelay = Convert.ToDouble(numericUpDown_trigger_delay.Value);
-            numericUpDown_exposure_time.Value = Convert.ToDecimal(_xmlInterface.CamTriggerDelay);
+            _bIsUIUpdate = true;
+            numericUpDown_trigger_delay.Value = Convert.ToDecimal(_xmlInterface.CamTriggerDelay);
+            _bIsUIUpdate = false;
         }
 
         private void numericUpDown_roi_left_ValueChanged(object sender, EventArgs e)
