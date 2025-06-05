@@ -74,30 +74,57 @@ namespace ExampleXMLInterface
             {
                 if (_xmlInterface.EvaluationGetFrameFormat == GetFrameFormat.TIF)
                 {
-                    if (_xmlInterface.EvaluationGetFrameTifRawData != null)
+                    if (_xmlInterface.EvaluationGetFrameTifRawData != null && !_xmlInterface.EvaluationGetFrameIsColor)
                     {
                         // 16bit Raw data(byte) 처리 
                         int height = _xmlInterface.EvaluationGetFrameBitmapHeight;
                         int width = _xmlInterface.EvaluationGetFrameBitmapWidth;
                         byte[] rawData = _xmlInterface.EvaluationGetFrameTifRawData;
 
-                        // 16bit Raw data --> OpenCVSharp 8bit (For Display UI)
-                        Mat decodedMat = new Mat(height, width, MatType.CV_16UC1);
-                        Marshal.Copy(rawData, 0, decodedMat.Data, rawData.Length);
-                        decodedMat.ConvertTo(decodedMat, MatType.CV_8UC1, 65535 / (Math.Pow(2, _xmlInterface.CamDepth) - 1) / 257); // 16비트 → 8비트로 축소
-                        _preview.SetBitmap(decodedMat.ToBitmap());
-
-
-                        // 16bit Raw data(byte) 처리 Pixel data 가져오기
-                        ushort[,] pixelArray = new ushort[height, width];
-
-                        for (int y = 0; y < height; y++)
+                        if (_xmlInterface.EvaluationGetFrameBitDepth == 16)
                         {
-                            for (int x = 0; x < width; x++)
+                            // 16bit Raw data --> OpenCVSharp 8bit (For Display UI)
+                            Mat decodedMat = new Mat(height, width, MatType.CV_16UC1);
+                            Marshal.Copy(rawData, 0, decodedMat.Data, rawData.Length);
+                            decodedMat.ConvertTo(decodedMat, MatType.CV_8UC1, 65535 / (Math.Pow(2, _xmlInterface.CamDepth) - 1) / 257); // 16비트 → 8비트로 축소
+                            _preview.SetBitmap(decodedMat.ToBitmap());
+                        }
+                        else
+                        {
+                            // 8bit Raw data --> OpenCVSharp 8bit (For Display UI)
+                            Mat decodedMat = new Mat(height, width, MatType.CV_8UC1);
+                            Marshal.Copy(rawData, 0, decodedMat.Data, rawData.Length);
+                            _preview.SetBitmap(decodedMat.ToBitmap());
+                        }
+                            
+
+
+                        if (_xmlInterface.EvaluationGetFrameBitDepth == 16)
+                        {
+                            // 16bit Raw data(byte) 처리 Pixel data 가져오기
+                            ushort[,] pixelArray = new ushort[height, width];
+
+                            for (int y = 0; y < height; y++)
                             {
-                                int idx = (y * width + x) * 2;
-                                ushort pixel = (ushort)(rawData[idx] | (rawData[idx + 1] << 8));
-                                pixelArray[y, x] = pixel;
+                                for (int x = 0; x < width; x++)
+                                {
+                                    int idx = (y * width + x) * 2;
+                                    ushort pixel = (ushort)(rawData[idx] | (rawData[idx + 1] << 8));
+                                    pixelArray[y, x] = pixel;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // 8bit Raw data(byte) 처리 Pixel data 가져오기
+                            byte[,] pixelArray = new byte[height, width];
+                            for (int y = 0; y < height; y++)
+                            {
+                                for (int x = 0; x < width; x++)
+                                {
+                                    int idx = y * width + x;
+                                    pixelArray[y, x] = rawData[idx];
+                                }
                             }
                         }
                     }

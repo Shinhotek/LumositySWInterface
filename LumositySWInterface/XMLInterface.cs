@@ -280,6 +280,8 @@ namespace LumosityXMLInterface
         private bool _bGetFrameActive = false;
         private int _nGetGrameScale = 20;
         private GetFrameFormat _getFrameFormat = GetFrameFormat.BMP;
+        private int _nBitDepth = -1; // -1: not set, 8: 8bit, 16: 16bit, 24: 24bit
+        private bool _bIsColor = true; // true: color, false: grayscale
 
         // frame image
         private int _nFrameImgWidth = -1;
@@ -1827,6 +1829,22 @@ namespace LumosityXMLInterface
         public byte[] EvaluationGetFrameTifRawData
         {
             get => _byteTifBuff;
+        }
+
+        /// <summary>
+        /// 취득된 Frame 이미지의 Bit Depth (-1:not invalidate, 8, 16, 24)
+        /// </summary>
+        public int EvaluationGetFrameBitDepth
+        {
+            get => _nBitDepth;
+        }
+
+        /// <summary>
+        /// 취득된 Frame 이미지가 컬러인지 여부 (true: 컬러, false: 흑백)
+        /// </summary>
+        public bool EvaluationGetFrameIsColor
+        {
+            get => _bIsColor;
         }
 
         /// <summary>
@@ -3445,6 +3463,26 @@ namespace LumosityXMLInterface
                                                 if (int.TryParse(xAttrFrameTmp.Value, out height))
                                                 {
                                                     _nFrameImgHeight = height;
+                                                }
+                                            }
+
+                                            xAttrFrameTmp = xGetFrame.Attribute("bitdepth");
+                                            if (xAttrFrameTmp != null)
+                                            {
+                                                int bitDepth = -1;
+                                                if (int.TryParse(xAttrFrameTmp.Value, out bitDepth))
+                                                {
+                                                    _nBitDepth = bitDepth;
+                                                }
+                                            }
+
+                                            xAttrFrameTmp = xGetFrame.Attribute("isColor");
+                                            if (xAttrFrameTmp != null)
+                                            {
+                                                bool isColor = false;
+                                                if (bool.TryParse(xAttrFrameTmp.Value, out isColor))
+                                                {
+                                                    _bIsColor = isColor;
                                                 }
                                             }
                                         }
