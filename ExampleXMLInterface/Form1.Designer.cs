@@ -59,6 +59,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_stop = new System.Windows.Forms.Button();
             this.button_start = new System.Windows.Forms.Button();
+            this.button_exit_program = new System.Windows.Forms.Button();
             this.button_background = new System.Windows.Forms.Button();
             this.textBox_version = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -226,6 +227,9 @@
             this.copyClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_ip_addr = new System.Windows.Forms.TextBox();
             this.numericUpDown_port = new System.Windows.Forms.NumericUpDown();
+            this.button_exe_lum_x86 = new System.Windows.Forms.Button();
+            this.button_exe_lum_x64 = new System.Windows.Forms.Button();
+            this.button_exe_lum_large_x64 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -301,7 +305,7 @@
             // 
             // button_connect
             // 
-            this.button_connect.Location = new System.Drawing.Point(242, 12);
+            this.button_connect.Location = new System.Drawing.Point(242, 63);
             this.button_connect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_connect.Name = "button_connect";
             this.button_connect.Size = new System.Drawing.Size(75, 23);
@@ -312,7 +316,7 @@
             // 
             // button_disconnect
             // 
-            this.button_disconnect.Location = new System.Drawing.Point(323, 12);
+            this.button_disconnect.Location = new System.Drawing.Point(323, 63);
             this.button_disconnect.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.button_disconnect.Name = "button_disconnect";
             this.button_disconnect.Size = new System.Drawing.Size(83, 23);
@@ -362,7 +366,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.listView_available_items);
-            this.groupBox3.Location = new System.Drawing.Point(13, 126);
+            this.groupBox3.Location = new System.Drawing.Point(13, 149);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -402,7 +406,7 @@
             this.groupBox1.Controls.Add(this.textBox_value_unit);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(13, 344);
+            this.groupBox1.Location = new System.Drawing.Point(13, 367);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -498,7 +502,7 @@
             this.groupBox2.Controls.Add(this.numericUpDown_interval);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.checkBox_continuous);
-            this.groupBox2.Location = new System.Drawing.Point(13, 67);
+            this.groupBox2.Location = new System.Drawing.Point(13, 90);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -574,14 +578,15 @@
             // 
             this.groupBox4.Controls.Add(this.button_stop);
             this.groupBox4.Controls.Add(this.button_start);
-            this.groupBox4.Location = new System.Drawing.Point(547, 67);
+            this.groupBox4.Controls.Add(this.button_exit_program);
+            this.groupBox4.Location = new System.Drawing.Point(547, 90);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox4.Size = new System.Drawing.Size(440, 53);
+            this.groupBox4.Size = new System.Drawing.Size(309, 53);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Start / Stop";
+            this.groupBox4.Text = "Start / Stop / Exit";
             // 
             // button_stop
             // 
@@ -604,6 +609,16 @@
             this.button_start.Text = "Start";
             this.button_start.UseVisualStyleBackColor = true;
             this.button_start.Click += new System.EventHandler(this.button_start_Click);
+            // 
+            // button_exit_program
+            // 
+            this.button_exit_program.Location = new System.Drawing.Point(175, 20);
+            this.button_exit_program.Name = "button_exit_program";
+            this.button_exit_program.Size = new System.Drawing.Size(126, 23);
+            this.button_exit_program.TabIndex = 0;
+            this.button_exit_program.Text = "Exit Lumosity";
+            this.button_exit_program.UseVisualStyleBackColor = true;
+            this.button_exit_program.Click += new System.EventHandler(this.button_exit_program_Click);
             // 
             // button_background
             // 
@@ -638,7 +653,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.tabControl1);
-            this.groupBox5.Location = new System.Drawing.Point(547, 126);
+            this.groupBox5.Location = new System.Drawing.Point(547, 149);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -2829,7 +2844,7 @@
             // 
             // textBox_ip_addr
             // 
-            this.textBox_ip_addr.Location = new System.Drawing.Point(13, 12);
+            this.textBox_ip_addr.Location = new System.Drawing.Point(13, 63);
             this.textBox_ip_addr.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox_ip_addr.Name = "textBox_ip_addr";
             this.textBox_ip_addr.Size = new System.Drawing.Size(138, 21);
@@ -2838,7 +2853,7 @@
             // 
             // numericUpDown_port
             // 
-            this.numericUpDown_port.Location = new System.Drawing.Point(160, 12);
+            this.numericUpDown_port.Location = new System.Drawing.Point(160, 63);
             this.numericUpDown_port.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.numericUpDown_port.Maximum = new decimal(new int[] {
             9999999,
@@ -2854,12 +2869,45 @@
             0,
             0});
             // 
+            // button_exe_lum_x86
+            // 
+            this.button_exe_lum_x86.Location = new System.Drawing.Point(12, 12);
+            this.button_exe_lum_x86.Name = "button_exe_lum_x86";
+            this.button_exe_lum_x86.Size = new System.Drawing.Size(160, 23);
+            this.button_exe_lum_x86.TabIndex = 13;
+            this.button_exe_lum_x86.Text = "Execute Lumosity (32bit)";
+            this.button_exe_lum_x86.UseVisualStyleBackColor = true;
+            this.button_exe_lum_x86.Click += new System.EventHandler(this.button_exe_lum_x86_Click);
+            // 
+            // button_exe_lum_x64
+            // 
+            this.button_exe_lum_x64.Location = new System.Drawing.Point(178, 12);
+            this.button_exe_lum_x64.Name = "button_exe_lum_x64";
+            this.button_exe_lum_x64.Size = new System.Drawing.Size(160, 23);
+            this.button_exe_lum_x64.TabIndex = 14;
+            this.button_exe_lum_x64.Text = "Execute Lumosity (64bit)";
+            this.button_exe_lum_x64.UseVisualStyleBackColor = true;
+            this.button_exe_lum_x64.Click += new System.EventHandler(this.button_exe_lum_x64_Click);
+            // 
+            // button_exe_lum_large_x64
+            // 
+            this.button_exe_lum_large_x64.Location = new System.Drawing.Point(346, 12);
+            this.button_exe_lum_large_x64.Name = "button_exe_lum_large_x64";
+            this.button_exe_lum_large_x64.Size = new System.Drawing.Size(194, 23);
+            this.button_exe_lum_large_x64.TabIndex = 15;
+            this.button_exe_lum_large_x64.Text = "Execute Lumosity (Large_64bit)";
+            this.button_exe_lum_large_x64.UseVisualStyleBackColor = true;
+            this.button_exe_lum_large_x64.Click += new System.EventHandler(this.button_exe_lum_large_x64_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1008, 661);
+            this.ClientSize = new System.Drawing.Size(1008, 681);
+            this.Controls.Add(this.button_exe_lum_large_x64);
+            this.Controls.Add(this.button_exe_lum_x64);
+            this.Controls.Add(this.button_exe_lum_x86);
             this.Controls.Add(this.numericUpDown_port);
             this.Controls.Add(this.textBox_ip_addr);
             this.Controls.Add(this.groupBox5);
@@ -3179,6 +3227,10 @@
         private System.Windows.Forms.Button button_save_conf_path;
         private System.Windows.Forms.TextBox textBox_save_conf_path;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Button button_exit_program;
+        private System.Windows.Forms.Button button_exe_lum_x86;
+        private System.Windows.Forms.Button button_exe_lum_x64;
+        private System.Windows.Forms.Button button_exe_lum_large_x64;
     }
 }
 

@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net;
@@ -158,6 +159,60 @@ namespace ExampleXMLInterface
 
             MessageBox.Show(_xmlInterface.ErrorDetail);
         }
+
+        private void RunLumosityProgram(string relativePath)
+        {
+            bool is64BitOS = Environment.Is64BitOperatingSystem;
+
+            string programFilesPath;
+            string programFilesX86Path;
+
+            if (is64BitOS)
+            {
+                programFilesPath = Environment.GetEnvironmentVariable("ProgramW6432")
+                                   ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+                programFilesX86Path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            }
+            else
+            {
+                // 32bit OS인 경우엔 둘 다 같은 경로
+                programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                programFilesX86Path = programFilesPath;
+            }
+
+            // 실제 실행 경로 구성
+            string basePath = relativePath.StartsWith("Lumosity_General_x86", StringComparison.OrdinalIgnoreCase)
+                              ? programFilesX86Path : programFilesPath;
+
+            string exePath = Path.Combine(basePath, "Shinhotek", relativePath, "Lumosity.exe");
+
+            if (!File.Exists(exePath))
+            {
+                Console.WriteLine("The executable file does not exist: " + exePath);
+                MessageBox.Show("The executable file does not exist:\n" + exePath);
+                return;
+            }
+
+            try
+            {
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = exePath,
+                    UseShellExecute = true,
+                    Verb = "runas"
+                };
+
+                Process.Start(psi);
+                Console.WriteLine("The program was run.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error occurred while running:");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
 
         private void button_connect_Click(object sender, EventArgs e)
         {
@@ -1101,6 +1156,176 @@ namespace ExampleXMLInterface
             {
                 textBox_load_conf_path.Text = openFile.FileName;
             }
+        }
+
+        private void button_exit_program_Click(object sender, EventArgs e)
+        {
+            _xmlInterface.ExitProgram();
+        }
+
+        private void button_exe_lum_x86_Click(object sender, EventArgs e)
+        {
+            RunLumosityProgram("Lumosity_General_x86");
+
+            //bool is64BitOS = Environment.Is64BitOperatingSystem;
+
+            //string programFilesPath;
+            //string programFilesX86Path;
+
+            //if (is64BitOS)
+            //{
+            //    programFilesPath = Environment.GetEnvironmentVariable("ProgramW6432")
+            //                       ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            //    programFilesX86Path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            //}
+            //else
+            //{
+            //    // 32bit OS인 경우엔 둘 다 같은 경로
+            //    programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            //    programFilesX86Path = programFilesPath; // 동일하게 처리
+            //}
+
+            //// 실행할 외부 프로그램 경로 (예: 메모장)
+            //string exePath = Path.Combine(programFilesX86Path, "Shinhotek", "Lumosity_General_x86", "Lumosity.exe");
+
+            //// 파일 존재 여부 확인
+            //if (!File.Exists(exePath))
+            //{
+            //    Console.WriteLine("The executable file does not exist: " + exePath);
+            //    MessageBox.Show("The executable file does not exist: " + exePath);
+            //    return;
+            //}
+
+            //try
+            //{
+            //    // ProcessStartInfo 설정
+            //    ProcessStartInfo psi = new ProcessStartInfo
+            //    {
+            //        FileName = exePath,
+            //        UseShellExecute = true, // 관리자 권한 실행 시 true
+            //        Verb = "runas"          // 관리자 권한 요청
+            //    };
+
+            //    // 실행
+            //    Process.Start(psi);
+            //    Console.WriteLine("The program was run.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error occurred while running:");
+            //    Console.WriteLine(ex.Message);
+            //}
+        }
+
+        private void button_exe_lum_x64_Click(object sender, EventArgs e)
+        {
+            RunLumosityProgram("Lumosity_General_x64");
+
+            //bool is64BitOS = Environment.Is64BitOperatingSystem;
+
+            //string programFilesPath;
+            //string programFilesX86Path;
+
+            //if (is64BitOS)
+            //{
+            //    programFilesPath = Environment.GetEnvironmentVariable("ProgramW6432")
+            //                       ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            //    programFilesX86Path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            //}
+            //else
+            //{
+            //    // 32bit OS인 경우엔 둘 다 같은 경로
+            //    programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            //    programFilesX86Path = programFilesPath; // 동일하게 처리
+            //}
+
+            //// 실행할 외부 프로그램 경로 (예: 메모장)
+            //string exePath = Path.Combine(programFilesPath, "Shinhotek", "Lumosity_General_x64", "Lumosity.exe");
+
+            //// 파일 존재 여부 확인
+            //if (!File.Exists(exePath))
+            //{
+            //    Console.WriteLine("The executable file does not exist: " + exePath);
+            //    MessageBox.Show("The executable file does not exist: " + exePath);
+            //    return;
+            //}
+
+            //try
+            //{
+            //    // ProcessStartInfo 설정
+            //    ProcessStartInfo psi = new ProcessStartInfo
+            //    {
+            //        FileName = exePath,
+            //        UseShellExecute = true, // 관리자 권한 실행 시 true
+            //        Verb = "runas"          // 관리자 권한 요청
+            //    };
+
+            //    // 실행
+            //    Process.Start(psi);
+            //    Console.WriteLine("The program was run.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error occurred while running:");
+            //    Console.WriteLine(ex.Message);
+            //}
+        }
+
+        private void button_exe_lum_large_x64_Click(object sender, EventArgs e)
+        {
+            RunLumosityProgram("Lumosity_Large_x64");
+
+            //bool is64BitOS = Environment.Is64BitOperatingSystem;
+
+            //string programFilesPath;
+            //string programFilesX86Path;
+
+            //if (is64BitOS)
+            //{
+            //    programFilesPath = Environment.GetEnvironmentVariable("ProgramW6432")
+            //                       ?? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+
+            //    programFilesX86Path = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            //}
+            //else
+            //{
+            //    // 32bit OS인 경우엔 둘 다 같은 경로
+            //    programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            //    programFilesX86Path = programFilesPath; // 동일하게 처리
+            //}
+
+            //// 실행할 외부 프로그램 경로 (예: 메모장)
+            //string exePath = Path.Combine(programFilesPath, "Shinhotek", "Lumosity_Large_x64", "Lumosity.exe");
+
+            //// 파일 존재 여부 확인
+            //if (!File.Exists(exePath))
+            //{
+            //    Console.WriteLine("The executable file does not exist: " + exePath);
+            //    MessageBox.Show("The executable file does not exist: " + exePath);
+            //    return;
+            //}
+
+            //try
+            //{
+            //    // ProcessStartInfo 설정
+            //    ProcessStartInfo psi = new ProcessStartInfo
+            //    {
+            //        FileName = exePath,
+            //        UseShellExecute = true, // 관리자 권한 실행 시 true
+            //        Verb = "runas"          // 관리자 권한 요청
+            //    };
+
+            //    // 실행
+            //    Process.Start(psi);
+            //    Console.WriteLine("The program was run.");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error occurred while running:");
+            //    Console.WriteLine(ex.Message);
+            //}
         }
     }
 }

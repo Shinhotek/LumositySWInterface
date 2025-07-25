@@ -2182,6 +2182,25 @@ namespace LumosityXMLInterface
             return false;
         }
 
+        /// <summary>
+        /// Lumosity 프로그램을 종료
+        /// </summary>
+        /// <returns></returns>
+        public bool ExitProgram()
+        {
+            if (IsConnected)
+            {
+                XElement xSendRoot = new XElement("MLCommandSet");
+                XElement xApplication = new XElement("application");
+                XElement xExit = new XElement("exitApp");
+                xApplication.Add(xExit);
+                xSendRoot.Add(xApplication);
+                SendData(null, xSendRoot.ToString(), "application exitApp");
+                return CmdWait();
+            }
+            return false;
+        }
+
         private bool SetSettingGeneralFloatingAverage(int averageValue, bool enable)
         {
             XElement xSendRoot = new XElement("MLCommandSet");
@@ -3583,7 +3602,20 @@ namespace LumosityXMLInterface
                                     XAttribute xAttrPath = xSaveScr.Attribute("path");
                                     _strRemotePath = xAttrPath.Value;
                                 }
-                            }
+
+                                XElement xExitApp = xTmp.Element("exitApp");
+                                if (xExitApp != null && xExitApp.HasAttributes)
+                                {
+                                    XAttribute xAttrExit = xExitApp.Attribute("status");
+                                    if (xAttrExit != null)
+                                    {
+                                        if (xAttrExit.Value == "closing")
+                                        {
+                                            CmdCheckSet("application exitApp");
+                                        }
+                                    }
+                                }
+                            }                            
                             #endregion
 
                             #region acquisition
