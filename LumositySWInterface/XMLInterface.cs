@@ -578,7 +578,7 @@ namespace LumosityXMLInterface
         /// </summary>
         public int CamOffsetY
         {
-            get => _nCamOffsetX;
+            get => _nCamOffsetY;
             set
             {
                 SetSettingsCameraROI(_nCamOffsetX, value, _nCamWidth, _nCamHeight);
